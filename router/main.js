@@ -1,4 +1,11 @@
 const express = require("express");
-const app = express();
+var router = express.Router();
 
-console.log("hello world");
+router.get('/getList',(req, res)=>{
+    res.send("getList");
+});
+router.get('/addList', (req, res)=>{
+    res.send("addList");
+});
+
+module.exports = router;

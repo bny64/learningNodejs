@@ -1,6 +1,14 @@
-const express = require('express');
+const express = require("express");
 const app = express();
+const mainRouter = require("./router/main.js");
 
-const server = app.listen(8000, ()=>{
-    console.log("Express server has started on port 8000.");
+app.get('/',(req, rep)=>{
+    rep.send("<html><body>hello</body></html>");
+
+});
+
+app.use('/friend', mainRouter);
+
+app.listen(3000, () => {
+    console.log('App listening on port 3000!');
 });
