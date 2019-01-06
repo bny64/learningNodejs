@@ -1,10 +1,10 @@
 var globalValue;
 
-exports.setGlobal = (val)=>{
-    globalValue = val;
+exports.setGlobal = (moduleVaue)=>{
+    globalValue = moduleVaue;
 };
 
 exports.returnGlobal = () => {
     console.log(global);
     return globalValue;
-};
+}; 
