@@ -5,3 +5,6 @@ This project is used to make a amazing project using nodejs by ny
 
 2. 함수 선언식 function(){}, 함수 표현식 var,let,const a = function(){}
 함수선언식은 호이스팅이 되지만 함수 표현식은 호이스팅이 되지 않는다.
+
+3. node 사용자 module 경로에 관해
+https://opentutorials.org/module/938/7190
