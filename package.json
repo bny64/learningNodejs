@@ -1,0 +1,25 @@
+{
+  "name": "learningjavascript",
+  "version": "1.0.0",
+  "description": "the project of nam's",
+  "main": "colors.js",
+  "dependencies": {
+    "colors": "^1.3.3",
+    "express": "^4.16.4",
+    "underscore": "^1.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "nope",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "nope"
+  },
+  "keywords": [
+    "nam"
+  ],
+  "author": "baenamyul",
+  "license": "ISC"
+}
