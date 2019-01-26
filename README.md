@@ -8,3 +8,5 @@ This project is used to make a amazing project using nodejs by ny
 
 3. node 사용자 module 경로에 관해
 https://opentutorials.org/module/938/7190
+
+4. 화살표함수 https://jeong-pro.tistory.com/110
