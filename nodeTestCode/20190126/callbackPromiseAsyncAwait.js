@@ -21,7 +21,7 @@ function three1(obj){
     obj.address = "seoul";
     return setTimeout(() => {
         console.log('callback : '.rainbow);   
-        console.log(obj);
+        console.dir(obj);
         return obj;
     }, 500);
 }
@@ -52,7 +52,7 @@ function three2(obj){
     obj.address = "LA";
     return setTimeout(() => {
         console.log('promise : '.zebra);
-        console.log(obj);
+        console.dir(obj);
         return obj;
     }, 500);    
 }
@@ -119,6 +119,6 @@ function three3_(obj){
     obj.address = await three3();
     const obj2 = await one3_({}).then(two3_).then(three3_);
     console.log('async, await : '.red);
-    console.log(obj);
+    console.dir(obj);
     console.log(obj2);
 })();
