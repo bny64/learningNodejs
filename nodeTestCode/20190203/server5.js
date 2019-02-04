@@ -4,12 +4,24 @@ const url = require('url');
 const qs = require('querystring');
 
 const parseCookies = (cookie = '') => 
-    cookie
+cookie
     .split(';')
-    .map(v=>v.split('='))
-    .map(([k, ...vs])=>[k, vs.join('=')])
+    .map(function(v){
+        console.log(`v : ${v}`);
+        console.log(`v.split : ${v.split('=')}`);
+        return v.split('=');
+    })
+    .map(([k, ...vs])=>{
+        console.log(` k : ${k}`);
+        console.log(`vs : ${vs}`);
+        console.log(`vs.join : ${vs.join('=')}`);
+        return [k, vs.join('=')]
+    })
     .reduce((acc, [k, v])=>{
-        acc[k.trim()] = encodeURIComponent(v);
+        console.log(acc);
+        console.log(` [k, v] : ${k}, ${v}`);
+        acc[k.trim()] = decodeURIComponent(v);
+        console.log(`acc[k.trim()] : ${acc[k.trim()]}`);
         return acc;
     }, {});
 
@@ -35,7 +47,8 @@ http.createServer((req, res)=>{
 
     } else if(cookies.session && session[cookies.session].expires > new Date()){
         res.writeHead(200, {'Content-Type':'text/html; chartset=utf-8'});
-        res.end(`${session[cookies.session].name} hello~`);
+        console.log(`name : ${session[cookies.session].name}`);
+        res.end(`${session[cookies.session].name}님 안녕하세요`);
     }else{
         fs.readFile('./server4.html', (err, data)=>{
             if(err) throw err;
