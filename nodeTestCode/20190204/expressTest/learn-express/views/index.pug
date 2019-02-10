@@ -2,4 +2,24 @@ extends layout
 
 block content
   h1= title
+  h2= title
   p Welcome to #{title}
+  #login-button button
+  .post-image post-image
+  span#highlight span
+  p.hidden.full p
+  button(type='submit') 전송
+  p
+    | 안녕하세요
+    | 여러 줄 입력
+    br
+    |태그도 중간에 넣을 수 있음.
+  
+  style.
+    h1 {
+      font-size:30px;
+    }
+  
+  script.
+    var message = 'Pug';
+    alert(message);
