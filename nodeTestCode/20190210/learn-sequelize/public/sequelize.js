@@ -74,7 +74,7 @@ function getComment(id){
                             console.error(xhr.responseText);
                         }
                     };
-                    xhr.open('PATCH', '/comments' + comment.id);
+                    xhr.open('PATCH', '/comments/' + comment.id);
                     xhr.setRequestHeader('Content-Type','application/json');
                     xhr.send(JSON.stringify({comment:newComment}));
                 });
@@ -90,7 +90,7 @@ function getComment(id){
                             console.error(xhr.responseText);
                         }
                     };
-                    xhr.open('DELETE', '/comments' + comment.id);
+                    xhr.open('DELETE', '/comments/' + comment.id);
                     xhr.send();
                 });     
                 td = document.createElement('td');
@@ -105,10 +105,9 @@ function getComment(id){
             console.error(xhr.responseText);
         }
     };
-    xhr.open('GET', '/comments' + id);
+    xhr.open('GET', '/comments/' + id);
     xhr.send();
 }
-
 document.getElementById('user-form').addEventListener('submit',function(e){
     e.preventDefault();
     var name = e.target.username.value;
