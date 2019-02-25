@@ -1,14 +1,16 @@
 const express = require('express'); //express module 추가
-const cookieParser = reuiqre('cookie-parser'); //cookie parser module 추가
+const cookieParser = require('cookie-parser'); //cookie parser module 추가
 const morgan = require('morgan'); //morgan  module 추가
 const path = require('path'); //path module
-const session = require('session'); //session module
+const session = require('express-session'); //session module
 const flash = require('connect-flash'); //connect flash module
 require('dotenv').config();
 
 const pageRouter = require('./routes/page');
+const {sequelize} = require('./models');
 
 const app = express();
+sequelize.sync();
 
 app.set('views', path.join(__dirname, 'views')); //views 폴더를 연결
 app.set('view engine', 'pug'); //view 엔진
