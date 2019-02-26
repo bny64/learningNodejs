@@ -2,13 +2,12 @@ require('dotenv').config();
 
 const prompt = require('prompt-sync')();
 const ConversationV1 = require('watson-developer-cloud/assistant/v1');
-process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 
 const conversation = new ConversationV1({
   version: process.env.VERSION,
   username: process.env.USER,
   password: process.env.PASSWORD,
-  url: process.env.URL
+  //url: process.env.URL
 });
 
 const workspace_id = process.env.WORKSPACEID;
