@@ -3,6 +3,7 @@ const {isLoggedIn, isNotLoggedIn} = require('./middlewares');
 
 const router = express.Router();
 
+//isLoggedIn, isNotLoggedIn middleware는 미리 정의해놓았기 때문에 url이 매핑될 때 단순히 넣어주기만 하면 됨. 사용하기 편리
 router.get('/profile', isLoggedIn, (req, res)=>{
     res.render('profile', {title:'내 정보 - NodeBird', user:req.user});
 });

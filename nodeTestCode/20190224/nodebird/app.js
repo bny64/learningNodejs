@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express'); //express module 추가
 const cookieParser = require('cookie-parser'); //cookie parser module 추가
 const morgan = require('morgan'); //morgan  module 추가
@@ -5,14 +6,13 @@ const path = require('path'); //path module
 const session = require('express-session'); //session module
 const flash = require('connect-flash'); //connect flash module
 const passport = require('passport');
-require('dotenv').config();
 
-const pageRouter = require('./routes/page');
-const {sequelize} = require('./models');
-const passportConfig = require('./passport');
+const pageRouter = require('./routes/page'); //router 디렉토리의 page.js 추가
+const {sequelize} = require('./models'); //models 디렉토리의 index.js 추가
+const passportConfig = require('./passport'); //passport 디렉토리의 index.js 추가
 
 const app = express();
-sequelize.sync();
+sequelize.sync(); //테이블이 없으면 자동으로 생성해줌.
 passportConfig(passport);
 
 app.set('views', path.join(__dirname, 'views')); //views 폴더를 연결
