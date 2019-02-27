@@ -20,7 +20,7 @@ db.Hashtag = require('./hashtag')(sequelize, Sequelize);
 //관계 정의
 db.User.hasMany(db.Post);
 db.Post.belongsTo(db.User);
-db.Post.belongsToMany(db.Hashtag, { through: 'PostHashtag' });
+db.Post.belongsToMany(db.Hashtag, { through: 'PostHashtag' }); //두 테이블의 join를 위해 PostHashtag 새로운 모델 생성.
 db.Hashtag.belongsToMany(db.Post, { through: 'PostHashtag' });
 db.User.belongsToMany(db.User, {
   foreignKey: 'followingId',

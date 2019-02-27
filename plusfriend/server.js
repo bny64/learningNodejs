@@ -37,6 +37,7 @@ function processResponse(err, response){
     var newMessageFromUser = prompt('>> ');
     conversation.message({
     workspace_id: workspace_id,
-    input: { text: newMessageFromUser }
+    input: { text: newMessageFromUser },
+    context : response.context,
     }, processResponse)
 }
