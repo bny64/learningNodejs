@@ -4,13 +4,16 @@ const morgan = require('morgan'); //morgan  module 추가
 const path = require('path'); //path module
 const session = require('express-session'); //session module
 const flash = require('connect-flash'); //connect flash module
+const passport = require('passport');
 require('dotenv').config();
 
 const pageRouter = require('./routes/page');
 const {sequelize} = require('./models');
+const passportConfig = require('./passport');
 
 const app = express();
 sequelize.sync();
+passportConfig(passport);
 
 app.set('views', path.join(__dirname, 'views')); //views 폴더를 연결
 app.set('view engine', 'pug'); //view 엔진
@@ -31,6 +34,8 @@ app.use(session({
     },
 }));
 app.use(flash()); //flash 사용
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', pageRouter);
 

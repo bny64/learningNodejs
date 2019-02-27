@@ -5,9 +5,10 @@ const ConversationV1 = require('watson-developer-cloud/assistant/v1');
 
 const conversation = new ConversationV1({
   version: process.env.VERSION,
-  username: process.env.USER,
-  password: process.env.PASSWORD
-  //url: process.env.URL
+  //username : process.env.USER,
+  //password : process.env.PASSWORD,
+  iam_apikey:process.env.APIKEY,  
+  url: process.env.URL
 });
 
 const workspace_id = process.env.WORKSPACEID;
