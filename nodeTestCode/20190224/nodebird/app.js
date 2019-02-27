@@ -11,7 +11,7 @@ const pageRouter = require('./routes/page'); //router 디렉토리의 page.js �
 const {sequelize} = require('./models'); //models 디렉토리의 index.js 추가
 const passportConfig = require('./passport'); //passport 디렉토리의 index.js 추가
 
-const app = express();
+const app = express(); //express를 app 변수로 사용.
 sequelize.sync(); //테이블이 없으면 자동으로 생성해줌.
 passportConfig(passport);
 
