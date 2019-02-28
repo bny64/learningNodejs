@@ -23,11 +23,8 @@ router.post('/message', async (req, res)=>{
         let context = await storage.getItem(userKey);
         //처음 대화 시작
         if(typeof context ==='undefined'){
-            console.log('routes.index.js_1');
             returnObj = await watson(req.body.content, null, true);
-            console.log('routes.index.js_2');
             await storage.setItem(userKey, returnObj.context);
-            console.log('routes.index.js_3');
             res.send({
                 message : {
                     text : returnObj.text
