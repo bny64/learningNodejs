@@ -5,7 +5,7 @@ const {isLoggedIn, isNotLoggedIn} = require('./middlewares');
 const { User } = require('../models');
 
 const router = express.Router();
-router.post('.join', isNotLoggedIn, async (req, res, next) => {
+router.post('/join', isNotLoggedIn, async (req, res, next) => {
     const { email, nick, password } = req.body; //body에서 email, nick, password 가져옴
     try {
         const exUser = await User.find({where:{email}}); //user정보를 email로 가져옴.
@@ -28,6 +28,7 @@ router.post('.join', isNotLoggedIn, async (req, res, next) => {
 })
 
 router.post('/login', isNotLoggedIn, (req, res, next)=>{
+    //첫 번째 파라미터가 local이기 때문에 local strategy로 이동.
     passport.authenticate('local', (authError, user, info)=>{
         if(authError){
             console.error(authError);

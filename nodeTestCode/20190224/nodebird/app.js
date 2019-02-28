@@ -6,14 +6,14 @@ const path = require('path'); //path module
 const session = require('express-session'); //session module
 const flash = require('connect-flash'); //connect flash module
 const passport = require('passport');
-
+//----------------------module----------------------
 const pageRouter = require('./routes/page'); //router 디렉토리의 page.js 추가
 const {sequelize} = require('./models'); //models 디렉토리의 index.js 추가
 const passportConfig = require('./passport'); //passport 디렉토리의 index.js 추가
 
 const app = express(); //express를 app 변수로 사용.
 sequelize.sync(); //테이블이 없으면 자동으로 생성해줌.
-passportConfig(passport);
+passportConfig(passport); //serialize, deserialize, strategy 정의하고 passport 객체에 입력.
 
 app.set('views', path.join(__dirname, 'views')); //views 폴더를 연결
 app.set('view engine', 'pug'); //view 엔진
@@ -34,6 +34,7 @@ app.use(session({
     },
 }));
 app.use(flash()); //flash 사용
+//코드 진행 순서 (passport) : localLogin->LocalStrategy->serializeUser->deserializeUser->localLoginResult
 app.use(passport.initialize());
 app.use(passport.session());
 
