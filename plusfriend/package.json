@@ -9,7 +9,9 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "bluebird": "^3.5.3",
     "dotenv": "^6.2.0",
+    "node-persist": "^3.0.4",
     "prompt-sync": "^4.1.6",
     "watson-developer-cloud": "^3.18.1"
   }

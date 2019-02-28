@@ -1,12 +1,14 @@
-var http = require('http');
-var url = require('url');
+require('dotenv').config();
+const express = require('express');
 const router = require('./routes');
 
-http.createServer(function(req, res){
+const app = express();
 
-    var pathName = url.parse(req.url).pathname;    
-    router(pathName, req, res);
+app.use(express.json());
+app.use(express.urlencoded({extended:false}));
 
-}).listen(9850, function() {
-    console.log('Server running');
+app.use('/', router);
+
+app.listen(process.env.PORT,()=>{
+    console.log('server running!');
 });
