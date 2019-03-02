@@ -12,7 +12,7 @@ router.get('/keyboard', (req, res)=>{
         type:'text'
     });
 });
-
+//after the first conversation.
 router.post('/message', async (req, res)=>{
     
     const userKey = req.body.user_key;
