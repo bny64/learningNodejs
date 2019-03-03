@@ -28,6 +28,7 @@ router.post('/join', isNotLoggedIn, async (req, res, next) => {
 })
 
 router.post('/login', isNotLoggedIn, (req, res, next)=>{
+    //첫 번째 파라미터가 local이기 때문에 local strategy로 이동.
     passport.authenticate('local', (authError, user, info)=>{
         if(authError){
             console.error(authError);
