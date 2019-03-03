@@ -5,7 +5,7 @@ const {isLoggedIn, isNotLoggedIn} = require('./middlewares');
 const { User } = require('../models');
 
 const router = express.Router();
-router.post('.join', isNotLoggedIn, async (req, res, next) => {
+router.post('/join', isNotLoggedIn, async (req, res, next) => {
     const { email, nick, password } = req.body; //body에서 email, nick, password 가져옴
     try {
         const exUser = await User.find({where:{email}}); //user정보를 email로 가져옴.
@@ -17,7 +17,7 @@ router.post('.join', isNotLoggedIn, async (req, res, next) => {
         const hash = await bcrypt.hash(password, 12); //패스워드 암호화
         await User.create({
             email,
-            nick,
+            nick, //닉네임
             password : hash,
         }); //새로운 유저 생성
         return res.redirect('/');
