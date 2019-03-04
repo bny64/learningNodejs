@@ -1,5 +1,5 @@
 require('dotenv').config({ path: '../.env' });
-var prompt = require('prompt-sync')();
+var debug = require('debug')('chatbot');
 var util = require('util');
 var ConversationV1 = require('watson-developer-cloud/conversation/v1');
 
@@ -26,15 +26,13 @@ function watsonDialog(input, context, initCheck){
             sendObj.context = context;
         }
 
-        conversation.message(sendObj, (err, response)=>{
-
-            if(err){
-                rejected(err);
-            }
+        conversation.message(sendObj, (err, response)=>{         
+            if(err) rejected(err);
             responseObj.text = response.output.text.join('\n');
             
             if(typeof initCheck !== 'undefined') responseObj.context = response.output.context;
-            
+            console.log(responseObj);
+            debug(`responseObj : ${responseObj}`);
             resolved(responseObj);
         });
 
