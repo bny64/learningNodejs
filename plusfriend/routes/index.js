@@ -13,7 +13,7 @@ router.get('/keyboard', (req, res)=>{
         type:'text'
     });
 });
-
+//after the first conversation.
 router.post('/message', async (req, res)=>{
     
     const hash = crypto.createHash('sha256');

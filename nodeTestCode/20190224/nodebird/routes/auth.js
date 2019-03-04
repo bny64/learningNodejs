@@ -17,7 +17,7 @@ router.post('/join', isNotLoggedIn, async (req, res, next) => {
         const hash = await bcrypt.hash(password, 12); //패스워드 암호화
         await User.create({
             email,
-            nick,
+            nick, //닉네임
             password : hash,
         }); //새로운 유저 생성
         return res.redirect('/');
