@@ -1,5 +1,97 @@
-extends layout
+extends layout/layout1
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .about
+    .container
+      .text-center
+        h2 Quaerat quod voluptate consequuntur 
+        .col-md-10.col-md-offset-1
+          p
+            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat quod voluptate consequuntur ad quasi,
+            | dolores obcaecati ex aliquid, dolor provident accusamus omnis dolorum ipsam. Voluptatem ipsum expedita, corporis facilis laborum asperiores nostrum!
+            | Amet porro numquam ratione temporibus quia dolorem sint lorem voluptates quasi mollitia.
+        .col-md-6.col-sm-6.col-xs-6
+          .btn-gamp
+            a(href='#') Learn More
+        .col-md-6.col-sm-6.col-xs-6
+          .gamp-btn
+            a(href='#') download
+  hr
+  .services
+    .container
+      .text-center
+        h2 consectetur adipisicing elit
+      .col-md-3.wow.fadeInDown(data-wow-duration='1000ms', data-wow-delay='300ms')
+        i.fa.fa-heart-o
+        h3 Fully Responsive
+        p
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum nam numquam voluptates cumque inventore, quibusdam corporis consequatur amet.
+      .col-md-3.wow.fadeInDown(data-wow-duration='1000ms', data-wow-delay='600ms')
+        i.fa.fa-cloud
+        h3 Retina Ready
+        p
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum nam numquam voluptates cumque inventore, quibusdam corporis consequatur amet.
+      .col-md-3.wow.fadeInDown(data-wow-duration='1000ms', data-wow-delay='900ms')
+        i.fa.fa-book
+        h3 Fresh and Clean
+        p
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum nam numquam voluptates cumque inventore, quibusdam corporis consequatur amet.
+      .col-md-3.wow.fadeInDown(data-wow-duration='1000ms', data-wow-delay='1200ms')
+        i.fa.fa-gear
+        h3 Easy to Customize
+        p
+          | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum nam numquam voluptates cumque inventore, quibusdam corporis consequatur amet.
+  section.action
+    .container
+      .left-text.hidden-xs
+        h4 Amet porro numquam ratione
+        p
+          em
+            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi ut explicabo magni sapiente.
+          br
+          br
+          | Inventore at quia, vel in repellendus, cumque dolorem autem ad quidem mollitia porro blanditiis atque rerum debitis eveniet nostrum aliquam. Sint aperiam expedita sapiente amet officia quis perspiciatis adipisci, iure dolorem esse exercitationem!
+      .right-image.hidden-xs
+  .gallery
+    .text-center
+      h2 Gallery
+      p
+        | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat quod voluptate consequuntur ad quasi, dolores obcaecati ex aliquid, dolor provident
+    .container
+      .col-md-4
+        figure.effect-marley
+          img.img-responsive(src='img/8.jpg', alt='')
+          figcaption
+            h4 sweet marley
+            p Marley tried to convince her but she was not interested.
+      .col-md-4
+        figure.effect-marley
+          img.img-responsive(src='img/9.jpg', alt='')
+          figcaption
+            h4 sweet marley
+            p Marley tried to convince her but she was not interested.
+      .col-md-4
+        figure.effect-marley
+          img.img-responsive(src='img/10.jpg', alt='')
+          figcaption
+            h4 sweet marley
+            p Marley tried to convince her but she was not interested.
+    .container
+      .col-md-4
+        figure.effect-marley
+          img.img-responsive(src='img/11.jpg', alt='')
+          figcaption
+            h4 sweet marley
+            p Marley tried to convince her but she was not interested.
+      .col-md-4
+        figure.effect-marley
+          img.img-responsive(src='img/12.jpg', alt='')
+          figcaption
+            h4 sweet marley
+            p Marley tried to convince her but she was not interested.
+      .col-md-4
+        figure.effect-marley
+          img.img-responsive(src='img/13.jpg', alt='')
+          figcaption
+            h4 sweet marley
+            p Marley tried to convince her but she was not interested.
