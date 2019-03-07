@@ -36,4 +36,32 @@ header#fh5co-header-section.sticky-banner
           li
             a(href='contact.html') Contact
           li
-            a(href='login.html') Login
+            a#loginBtn(href='#') Login            
+    .dim-layer
+      .dimBg
+      #layer2.pop-layer
+        .pop-container
+          .pop-conts
+            // content //
+            form(action='/auth/login', method='post')
+            .col-sm-12.mt
+              section
+                label(for='loginAccount') ACCOUNT
+                input#loginAccount(type='text', placeholder='ID를 입력하세요')
+            .col-sm-12.mt
+              section
+                label(for='loginPassword') PASSWORD
+                input#loginPassword(type='password', placeholder='비밀번호를 입력하세요')
+            //p.ctxt.mb20
+              | Thank you.
+              br
+              |                     Your registration was submitted successfully.
+              br
+              |                     Selected invitees will be notified by e-mail on JANUARY 24th.
+              br
+              br
+              |                     Hope to see you soon!            
+            .btn-login
+              a.btn-layerLogin.btn-a(href='#') Login
+              a.btn-layerClose.btn-a(href='#') Close
+script(src="js/auth/login.js")                        

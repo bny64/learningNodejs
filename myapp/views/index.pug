@@ -8,6 +8,7 @@ block content
         .container
           .row
             .col-sm-5.col-md-5
+              if user && user.id
               .tabulation.animate-box
                 // Nav tabs
                 ul.nav.nav-tabs(role='tablist')
@@ -415,3 +416,4 @@ block content
               | John Doe, Founder 
               a(href='#') FREEHTML5.co
               span.subtext Creative Director
+  script(src="js/index.js")

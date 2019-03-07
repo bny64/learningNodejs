@@ -6,8 +6,10 @@ const path = require('path'); //path module
 const session = require('express-session'); //session module
 const flash = require('connect-flash'); //connect flash module
 const passport = require('passport');
+const debug = require('debug')('app.js');
 //----------------------module----------------------
 const pageRouter = require('./routes/page'); //router 디렉토리의 page.js 추가
+const authRouter = require('./routes/auth');
 const {sequelize} = require('./models'); //models 디렉토리의 index.js 추가
 const passportConfig = require('./passport'); //passport 디렉토리의 index.js 추가
 
@@ -37,8 +39,10 @@ app.use(flash()); //flash 사용
 //코드 진행 순서 (passport) : localLogin->LocalStrategy->serializeUser->deserializeUser->localLoginResult
 app.use(passport.initialize());
 app.use(passport.session());
-
+debug('before router');
 app.use('/', pageRouter);
+app.use('/auth', authRouter);
+debug('after router');
 
 app.use((req, res, next)=>{
     const err = new Error('Not Found');

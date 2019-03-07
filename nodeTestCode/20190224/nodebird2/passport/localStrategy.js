@@ -6,7 +6,7 @@ const { User } = require('../models');
 module.exports = (passport) => {
     passport.use(new LocalStrategy({
         usernameField : 'email',
-        passwordField:'passoword',
+        passwordField:'password',
         //옵션 객체 뒤 함수는 옵션에서 정의한 프로퍼티
         // usernameField : 'email' -> email
         // passwordField:'passoword' -> password

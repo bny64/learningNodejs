@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "Namyul64!",
-    "database": "nodebird",
+    "database": "bny",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

@@ -3,9 +3,11 @@ const passport = require('passport');
 const bcrypt = require('bcrypt');
 const {isLoggedIn, isNotLoggedIn} = require('./middlewares');
 const { User } = require('../models');
+const debug = require('debug')('auth.js');
 
 const router = express.Router();
-router.post('/join', isNotLoggedIn, async (req, res, next) => {
+router.post('/join', async (req, res, next) => {
+    debug(' /join post');
     const { email, nick, password } = req.body; //body에서 email, nick, password 가져옴
     try {
         const exUser = await User.find({where:{email}}); //user정보를 email로 가져옴.
@@ -52,7 +54,7 @@ router.post('/login', isNotLoggedIn, (req, res, next)=>{
 
 router.get('/logout', isLoggedIn, (req, res)=>{
     req.logout();
-    req.session.destory();
+    req.session.destroy();
     res.redirect('/');
 })
 
