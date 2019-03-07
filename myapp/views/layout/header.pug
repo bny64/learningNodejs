@@ -1,25 +1,39 @@
-header#header
-  nav.navbar.navbar-default.navbar-static-top(role='banner')
-    .container
-      .navbar-header
-        button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-          span.sr-only Toggle navigation
-          span.icon-bar
-          span.icon-bar
-          span.icon-bar
-        .navbar-brand
-          a(href='index.html')
-            h1 Day
-      .navbar-collapse.collapse
-        .menu
-          ul.nav.nav-tabs(role='tablist')
-            li(role='presentation')
-              a.active(href='index.html') Home
-            li(role='presentation')
-              a(href='about.html') About Us
-            li(role='presentation')
-              a(href='services.html') Services
-            li(role='presentation')
-              a(href='gallery.html') Gallery
-            li(role='presentation')
-              a(href='contact.html') Contact
+header#fh5co-header-section.sticky-banner
+  .container
+    .nav-header
+      a.js-fh5co-nav-toggle.fh5co-nav-toggle.dark(href='#')
+        i
+      h1#fh5co-logo
+        a(href='index.html')
+          i.icon-airplane
+          | Travel
+      // START #fh5co-menu-wrap
+      nav#fh5co-menu-wrap(role='navigation')
+        ul#fh5co-primary-menu.sf-menu
+          li.active
+            a(href='index.html') Home
+          li
+            a.fh5co-sub-ddown(href='vacation.html') Vacations
+            ul.fh5co-sub-menu
+              li
+                a(href='#') Family
+              li
+                a(href='#') CSS3 & HTML5
+              li
+                a(href='#') Angular JS
+              li
+                a(href='#') Node JS
+              li
+                a(href='#') Django & Python
+          li
+            a(href='flight.html') Flights
+          li
+            a(href='hotel.html') Hotel
+          li
+            a(href='car.html') Car
+          li
+            a(href='blog.html') Blog
+          li
+            a(href='contact.html') Contact
+          li
+            a(href='login.html') Login

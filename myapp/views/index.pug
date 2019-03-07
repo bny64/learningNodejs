@@ -1,97 +1,417 @@
 extends layout/layout1
 
 block content
-  .about
+  .fh5co-hero
+    .fh5co-overlay
+    .fh5co-cover(data-stellar-background-ratio='0.5', style='background-image: url(images/cover_bg_1.jpg);')
+      .desc
+        .container
+          .row
+            .col-sm-5.col-md-5
+              .tabulation.animate-box
+                // Nav tabs
+                ul.nav.nav-tabs(role='tablist')
+                  li.active(role='presentation', style="float:none;")
+                    a(href='#login', aria-controls='login', role='tab', data-toggle='tab' style="margin-right:0px;") SIGN UP
+                  //-li(role='presentation')
+                    a(href='#hotels', aria-controls='hotels', role='tab', data-toggle='tab') Hotels
+                  //-li(role='presentation')
+                    a(href='#packages', aria-controls='packages', role='tab', data-toggle='tab') Packages
+                // Tab panes
+                .tab-content
+                  #login.tab-pane.active(role='tabpanel')
+                    .row                                            
+                      //.col-xxs-12.col-xs-6.mt.alternate
+                        .input-field
+                          label(for='date-end') Check Out:
+                          input#date-end.form-control(type='text', placeholder='mm/dd/yyyy')                      
+                      .col-sm-12.mt
+                        section
+                          label(for='account') ACCOUNT
+                          input#account(type='text', placeholder='ID를 입력하세요.')
+                      .col-sm-12.mt
+                        section
+                          label(for='password') PASSWORD
+                          input#password(type='PASSWORD', placeholder='비밀번호를 입력하세요.')
+                      .col-xxs-12.col-xs-6.mt.alternate
+                        .input-field
+                          label(for='emailid') EMAIL
+                          input#emailid(type='text', placeholder='EMAIL을 입력하세요.' style='font-size:12px;')                      
+                      .col-xxs-12.col-xs-6.mt.alternate
+                        section
+                          label(for='email') &nbsp;
+                          select.cs-select.cs-skin-border
+                            option(value='', disabled='', selected='') @naver.com
+                            option(value='economy') @gmail.com
+                      //.col-sm-12.mt
+                        section
+                          label(for='class') Class:
+                          select.cs-select.cs-skin-border
+                            option(value='', disabled='', selected='') Economy
+                            option(value='economy') Economy
+                            option(value='first') First
+                            option(value='business') Business                      
+                      .col-xs-12
+                        input.btn.btn-primary.btn-block(type='submit', value='SIGN UP!')
+                  #hotels.tab-pane(role='tabpanel')
+                    .row
+                      .col-xxs-12.col-xs-12.mt
+                        .input-field
+                          label(for='from') City:
+                          input#from-place.form-control(type='text', placeholder='Los Angeles, USA')
+                      .col-xxs-12.col-xs-6.mt.alternate
+                        .input-field
+                          label(for='date-start') Return:
+                          input#date-start.form-control(type='text', placeholder='mm/dd/yyyy')
+                      .col-xxs-12.col-xs-6.mt.alternate
+                        .input-field
+                          label(for='date-end') Check Out:
+                          input#date-end.form-control(type='text', placeholder='mm/dd/yyyy')
+                      .col-sm-12.mt
+                        section
+                          label(for='class') Rooms:
+                          select.cs-select.cs-skin-border
+                            option(value='', disabled='', selected='') 1
+                            option(value='economy') 1
+                            option(value='first') 2
+                            option(value='business') 3
+                      .col-xxs-12.col-xs-6.mt
+                        section
+                          label(for='class') Adult:
+                          select.cs-select.cs-skin-border
+                            option(value='', disabled='', selected='') 1
+                            option(value='1') 1
+                            option(value='2') 2
+                            option(value='3') 3
+                            option(value='4') 4
+                      .col-xxs-12.col-xs-6.mt
+                        section
+                          label(for='class') Children:
+                          select.cs-select.cs-skin-border
+                            option(value='', disabled='', selected='') 1
+                            option(value='1') 1
+                            option(value='2') 2
+                            option(value='3') 3
+                            option(value='4') 4
+                      .col-xs-12
+                        input.btn.btn-primary.btn-block(type='submit', value='Search Hotel')
+                  #packages.tab-pane(role='tabpanel')
+                    .row
+                      .col-xxs-12.col-xs-6.mt
+                        .input-field
+                          label(for='from') City:
+                          input#from-place.form-control(type='text', placeholder='Los Angeles, USA')
+                      .col-xxs-12.col-xs-6.mt
+                        .input-field
+                          label(for='from') Destination:
+                          input#to-place.form-control(type='text', placeholder='Tokyo, Japan')
+                      .col-xxs-12.col-xs-6.mt.alternate
+                        .input-field
+                          label(for='date-start') Departs:
+                          input#date-start.form-control(type='text', placeholder='mm/dd/yyyy')
+                      .col-xxs-12.col-xs-6.mt.alternate
+                        .input-field
+                          label(for='date-end') Return:
+                          input#date-end.form-control(type='text', placeholder='mm/dd/yyyy')
+                      .col-sm-12.mt
+                        section
+                          label(for='class') Rooms:
+                          select.cs-select.cs-skin-border
+                            option(value='', disabled='', selected='') 1
+                            option(value='economy') 1
+                            option(value='first') 2
+                            option(value='business') 3
+                      .col-xxs-12.col-xs-6.mt
+                        section
+                          label(for='class') Adult:
+                          select.cs-select.cs-skin-border
+                            option(value='', disabled='', selected='') 1
+                            option(value='1') 1
+                            option(value='2') 2
+                            option(value='3') 3
+                            option(value='4') 4
+                      .col-xxs-12.col-xs-6.mt
+                        section
+                          label(for='class') Children:
+                          select.cs-select.cs-skin-border
+                            option(value='', disabled='', selected='') 1
+                            option(value='1') 1
+                            option(value='2') 2
+                            option(value='3') 3
+                            option(value='4') 4
+                      .col-xs-12
+                        input.btn.btn-primary.btn-block(type='submit', value='Search Packages')
+            .desc2.animate-box
+              .col-sm-7.col-sm-push-1.col-md-7.col-md-push-1
+                p
+                  | HandCrafted by 
+                  a.fh5co-site-name(href='http://frehtml5.co/', target='_blank') FreeHTML5.co
+                h2 Exclusive Limited Time Offer
+                h3 Fly to Hong Kong via Los Angeles, USA
+                span.price $599
+                // <p><a class="btn btn-primary btn-lg" href="#">Get Started</a></p>
+  #fh5co-tours.fh5co-section-gray
     .container
-      .text-center
-        h2 Quaerat quod voluptate consequuntur 
-        .col-md-10.col-md-offset-1
+      .row
+        .col-md-8.col-md-offset-2.text-center.heading-section.animate-box
+          h3 Hot Tours
           p
-            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat quod voluptate consequuntur ad quasi,
-            | dolores obcaecati ex aliquid, dolor provident accusamus omnis dolorum ipsam. Voluptatem ipsum expedita, corporis facilis laborum asperiores nostrum!
-            | Amet porro numquam ratione temporibus quia dolorem sint lorem voluptates quasi mollitia.
-        .col-md-6.col-sm-6.col-xs-6
-          .btn-gamp
-            a(href='#') Learn More
-        .col-md-6.col-sm-6.col-xs-6
-          .gamp-btn
-            a(href='#') download
-  hr
-  .services
+            | Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+      .row
+        .col-md-4.col-sm-6.fh5co-tours.animate-box(data-animate-effect='fadeIn')
+          div(href='#')
+            img.img-responsive(src='images/place-1.jpg', alt='Free HTML5 Website Template by FreeHTML5.co')
+            .desc
+              span
+              h3 New York
+              span 3 nights + Flight 5*Hotel
+              span.price $1,000
+              a.btn.btn-primary.btn-outline(href='#')
+                | Book Now 
+                i.icon-arrow-right22
+        .col-md-4.col-sm-6.fh5co-tours.animate-box(data-animate-effect='fadeIn')
+          div(href='#')
+            img.img-responsive(src='images/place-2.jpg', alt='Free HTML5 Website Template by FreeHTML5.co')
+            .desc
+              span
+              h3 Philippines
+              span 4 nights + Flight 5*Hotel
+              span.price $1,000
+              a.btn.btn-primary.btn-outline(href='#')
+                | Book Now 
+                i.icon-arrow-right22
+        .col-md-4.col-sm-6.fh5co-tours.animate-box(data-animate-effect='fadeIn')
+          div(href='#')
+            img.img-responsive(src='images/place-3.jpg', alt='Free HTML5 Website Template by FreeHTML5.co')
+            .desc
+              span
+              h3 Hongkong
+              span 2 nights + Flight 4*Hotel
+              span.price $1,000
+              a.btn.btn-primary.btn-outline(href='#')
+                | Book Now 
+                i.icon-arrow-right22
+        .col-md-12.text-center.animate-box
+          p
+            a.btn.btn-primary.btn-outline.btn-lg(href='#')
+              | See All Offers 
+              i.icon-arrow-right22
+  #fh5co-features
     .container
-      .text-center
-        h2 consectetur adipisicing elit
-      .col-md-3.wow.fadeInDown(data-wow-duration='1000ms', data-wow-delay='300ms')
-        i.fa.fa-heart-o
-        h3 Fully Responsive
-        p
-          | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum nam numquam voluptates cumque inventore, quibusdam corporis consequatur amet.
-      .col-md-3.wow.fadeInDown(data-wow-duration='1000ms', data-wow-delay='600ms')
-        i.fa.fa-cloud
-        h3 Retina Ready
-        p
-          | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum nam numquam voluptates cumque inventore, quibusdam corporis consequatur amet.
-      .col-md-3.wow.fadeInDown(data-wow-duration='1000ms', data-wow-delay='900ms')
-        i.fa.fa-book
-        h3 Fresh and Clean
-        p
-          | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum nam numquam voluptates cumque inventore, quibusdam corporis consequatur amet.
-      .col-md-3.wow.fadeInDown(data-wow-duration='1000ms', data-wow-delay='1200ms')
-        i.fa.fa-gear
-        h3 Easy to Customize
-        p
-          | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum nam numquam voluptates cumque inventore, quibusdam corporis consequatur amet.
-  section.action
+      .row
+        .col-md-4.animate-box
+          .feature-left
+            span.icon
+              i.icon-hotairballoon
+            .feature-copy
+              h3 Family Travel
+              p Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.
+              p
+                a(href='#') Learn More
+        .col-md-4.animate-box
+          .feature-left
+            span.icon
+              i.icon-search
+            .feature-copy
+              h3 Travel Plans
+              p Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.
+              p
+                a(href='#') Learn More
+        .col-md-4.animate-box
+          .feature-left
+            span.icon
+              i.icon-wallet
+            .feature-copy
+              h3 Honeymoon
+              p Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.
+              p
+                a(href='#') Learn More
+      .row
+        .col-md-4.animate-box
+          .feature-left
+            span.icon
+              i.icon-wine
+            .feature-copy
+              h3 Business Travel
+              p Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.
+              p
+                a(href='#') Learn More
+        .col-md-4.animate-box
+          .feature-left
+            span.icon
+              i.icon-genius
+            .feature-copy
+              h3 Solo Travel
+              p Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.
+              p
+                a(href='#') Learn More
+        .col-md-4.animate-box
+          .feature-left
+            span.icon
+              i.icon-chat
+            .feature-copy
+              h3 Explorer
+              p Facilis ipsum reprehenderit nemo molestias. Aut cum mollitia reprehenderit.
+              p
+                a(href='#') Learn More
+  #fh5co-destination
+    .tour-fluid
+      .row
+        .col-md-12
+          ul#fh5co-destination-list.animate-box
+            li.one-forth.text-center(style='background-image: url(images/place-1.jpg); ')
+              a(href='#')
+                .case-studies-summary
+                  h2 Los Angeles
+            li.one-forth.text-center(style='background-image: url(images/place-2.jpg); ')
+              a(href='#')
+                .case-studies-summary
+                  h2 Hongkong
+            li.one-forth.text-center(style='background-image: url(images/place-3.jpg); ')
+              a(href='#')
+                .case-studies-summary
+                  h2 Italy
+            li.one-forth.text-center(style='background-image: url(images/place-4.jpg); ')
+              a(href='#')
+                .case-studies-summary
+                  h2 Philippines
+            li.one-forth.text-center(style='background-image: url(images/place-5.jpg); ')
+              a(href='#')
+                .case-studies-summary
+                  h2 Japan
+            li.one-half.text-center
+              .title-bg
+                .case-studies-summary
+                  h2 Most Popular Destinations
+                  span
+                    a(href='#') View All Destinations
+            li.one-forth.text-center(style='background-image: url(images/place-6.jpg); ')
+              a(href='#')
+                .case-studies-summary
+                  h2 Paris
+            li.one-forth.text-center(style='background-image: url(images/place-7.jpg); ')
+              a(href='#')
+                .case-studies-summary
+                  h2 Singapore
+            li.one-forth.text-center(style='background-image: url(images/place-8.jpg); ')
+              a(href='#')
+                .case-studies-summary
+                  h2 Madagascar
+            li.one-forth.text-center(style='background-image: url(images/place-9.jpg); ')
+              a(href='#')
+                .case-studies-summary
+                  h2 Egypt
+            li.one-forth.text-center(style='background-image: url(images/place-10.jpg); ')
+              a(href='#')
+                .case-studies-summary
+                  h2 Indonesia
+  #fh5co-blog-section.fh5co-section-gray
     .container
-      .left-text.hidden-xs
-        h4 Amet porro numquam ratione
+      .row
+        .col-md-8.col-md-offset-2.text-center.heading-section.animate-box
+          h3 Recent From Blog
+          p
+            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit est facilis maiores, perspiciatis accusamus asperiores sint consequuntur debitis.
+    .container
+      .row.row-bottom-padded-md
+        .col-lg-4.col-md-4.col-sm-6
+          .fh5co-blog.animate-box
+            a(href='#')
+              img.img-responsive(src='images/place-1.jpg', alt='')
+            .blog-text
+              .prod-title
+                h3
+                  a(href='#') 30% Discount to Travel All Around the World
+                span.posted_by Sep. 15th
+                span.comment
+                  a(href='')
+                    | 21
+                    i.icon-bubble2
+                p
+                  | Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+                p
+                  a(href='#') Learn More...
+        .col-lg-4.col-md-4.col-sm-6
+          .fh5co-blog.animate-box
+            a(href='#')
+              img.img-responsive(src='images/place-2.jpg', alt='')
+            .blog-text
+              .prod-title
+                h3
+                  a(href='#') Planning for Vacation
+                span.posted_by Sep. 15th
+                span.comment
+                  a(href='')
+                    | 21
+                    i.icon-bubble2
+                p
+                  | Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+                p
+                  a(href='#') Learn More...
+        .clearfix.visible-sm-block
+        .col-lg-4.col-md-4.col-sm-6
+          .fh5co-blog.animate-box
+            a(href='#')
+              img.img-responsive(src='images/place-3.jpg', alt='')
+            .blog-text
+              .prod-title
+                h3
+                  a(href='#') Visit Tokyo Japan
+                span.posted_by Sep. 15th
+                span.comment
+                  a(href='')
+                    | 21
+                    i.icon-bubble2
+                p
+                  | Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+                p
+                  a(href='#') Learn More...
+        .clearfix.visible-md-block
+      .col-md-12.text-center.animate-box
         p
-          em
-            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi ut explicabo magni sapiente.
-          br
-          br
-          | Inventore at quia, vel in repellendus, cumque dolorem autem ad quidem mollitia porro blanditiis atque rerum debitis eveniet nostrum aliquam. Sint aperiam expedita sapiente amet officia quis perspiciatis adipisci, iure dolorem esse exercitationem!
-      .right-image.hidden-xs
-  .gallery
-    .text-center
-      h2 Gallery
-      p
-        | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat quod voluptate consequuntur ad quasi, dolores obcaecati ex aliquid, dolor provident
+          a.btn.btn-primary.btn-outline.btn-lg(href='#')
+            | See All Post 
+            i.icon-arrow-right22
+  // fh5co-blog-section
+  #fh5co-testimonial(style='background-image:url(images/img_bg_1.jpg);')
     .container
-      .col-md-4
-        figure.effect-marley
-          img.img-responsive(src='img/8.jpg', alt='')
-          figcaption
-            h4 sweet marley
-            p Marley tried to convince her but she was not interested.
-      .col-md-4
-        figure.effect-marley
-          img.img-responsive(src='img/9.jpg', alt='')
-          figcaption
-            h4 sweet marley
-            p Marley tried to convince her but she was not interested.
-      .col-md-4
-        figure.effect-marley
-          img.img-responsive(src='img/10.jpg', alt='')
-          figcaption
-            h4 sweet marley
-            p Marley tried to convince her but she was not interested.
-    .container
-      .col-md-4
-        figure.effect-marley
-          img.img-responsive(src='img/11.jpg', alt='')
-          figcaption
-            h4 sweet marley
-            p Marley tried to convince her but she was not interested.
-      .col-md-4
-        figure.effect-marley
-          img.img-responsive(src='img/12.jpg', alt='')
-          figcaption
-            h4 sweet marley
-            p Marley tried to convince her but she was not interested.
-      .col-md-4
-        figure.effect-marley
-          img.img-responsive(src='img/13.jpg', alt='')
-          figcaption
-            h4 sweet marley
-            p Marley tried to convince her but she was not interested.
+      .row.animate-box
+        .col-md-8.col-md-offset-2.text-center.fh5co-heading
+          h2 Happy Clients
+      .row
+        .col-md-4
+          .box-testimony.animate-box
+            blockquote
+              span.quote
+                span
+                  i.icon-quotes-right
+              p
+                | “Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.”
+            p.author
+              | John Doe, CEO 
+              a(href='http://freehtml5.co/', target='_blank') FREEHTML5.co
+              span.subtext Creative Director
+        .col-md-4
+          .box-testimony.animate-box
+            blockquote
+              span.quote
+                span
+                  i.icon-quotes-right
+              p
+                | “Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.”
+            p.author
+              | John Doe, CEO 
+              a(href='http://freehtml5.co/', target='_blank') FREEHTML5.co
+              span.subtext Creative Director
+        .col-md-4
+          .box-testimony.animate-box
+            blockquote
+              span.quote
+                span
+                  i.icon-quotes-right
+              p
+                | “Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.”
+            p.author
+              | John Doe, Founder 
+              a(href='#') FREEHTML5.co
+              span.subtext Creative Director
