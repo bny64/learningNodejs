@@ -25,7 +25,9 @@ router.post('/join', async (req, res)=>{
             email : emailAcc + emailAdd,
             userKey,
         });
+        req.session.joinCheck = true;
         return res.redirect('/');
+
     }catch(error){
         console.error(error);        
     }

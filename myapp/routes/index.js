@@ -3,7 +3,12 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'BNY' });
+  if(req.session.joinCheck){
+    delete req.session.joinCheck;
+    res.render('index', {title : 'BNY', joinCheck:true});
+  }else{
+    res.render('index', { title: 'BNY' });
+  }
 });
 
 module.exports = router;
