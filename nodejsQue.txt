@@ -1,0 +1,1 @@
+1. nodejs에서 module로써의 class 사용 : https://stackoverflow.com/questions/42684177/node-js-es6-classes-with-require
