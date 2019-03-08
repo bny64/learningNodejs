@@ -19,129 +19,43 @@ block content
                   //-li(role='presentation')
                     a(href='#packages', aria-controls='packages', role='tab', data-toggle='tab') Packages
                 // Tab panes
-                .tab-content
-                  #login.tab-pane.active(role='tabpanel')
-                    .row                                            
-                      //.col-xxs-12.col-xs-6.mt.alternate
-                        .input-field
-                          label(for='date-end') Check Out:
-                          input#date-end.form-control(type='text', placeholder='mm/dd/yyyy')                      
-                      .col-sm-12.mt
-                        section
-                          label(for='account') ACCOUNT
-                          input#account(type='text', placeholder='ID를 입력하세요.')
-                      .col-sm-12.mt
-                        section
-                          label(for='password') PASSWORD
-                          input#password(type='PASSWORD', placeholder='비밀번호를 입력하세요.')
-                      .col-xxs-12.col-xs-6.mt.alternate
-                        .input-field
-                          label(for='emailid') EMAIL
-                          input#emailid(type='text', placeholder='EMAIL을 입력하세요.' style='font-size:12px;')                      
-                      .col-xxs-12.col-xs-6.mt.alternate
-                        section
-                          label(for='email') &nbsp;
-                          select.cs-select.cs-skin-border
-                            option(value='', disabled='', selected='') @naver.com
-                            option(value='economy') @gmail.com
-                      //.col-sm-12.mt
-                        section
-                          label(for='class') Class:
-                          select.cs-select.cs-skin-border
-                            option(value='', disabled='', selected='') Economy
-                            option(value='economy') Economy
-                            option(value='first') First
-                            option(value='business') Business                      
-                      .col-xs-12
-                        input.btn.btn-primary.btn-block(type='submit', value='SIGN UP!')
-                  #hotels.tab-pane(role='tabpanel')
-                    .row
-                      .col-xxs-12.col-xs-12.mt
-                        .input-field
-                          label(for='from') City:
-                          input#from-place.form-control(type='text', placeholder='Los Angeles, USA')
-                      .col-xxs-12.col-xs-6.mt.alternate
-                        .input-field
-                          label(for='date-start') Return:
-                          input#date-start.form-control(type='text', placeholder='mm/dd/yyyy')
-                      .col-xxs-12.col-xs-6.mt.alternate
-                        .input-field
-                          label(for='date-end') Check Out:
-                          input#date-end.form-control(type='text', placeholder='mm/dd/yyyy')
-                      .col-sm-12.mt
-                        section
-                          label(for='class') Rooms:
-                          select.cs-select.cs-skin-border
-                            option(value='', disabled='', selected='') 1
-                            option(value='economy') 1
-                            option(value='first') 2
-                            option(value='business') 3
-                      .col-xxs-12.col-xs-6.mt
-                        section
-                          label(for='class') Adult:
-                          select.cs-select.cs-skin-border
-                            option(value='', disabled='', selected='') 1
-                            option(value='1') 1
-                            option(value='2') 2
-                            option(value='3') 3
-                            option(value='4') 4
-                      .col-xxs-12.col-xs-6.mt
-                        section
-                          label(for='class') Children:
-                          select.cs-select.cs-skin-border
-                            option(value='', disabled='', selected='') 1
-                            option(value='1') 1
-                            option(value='2') 2
-                            option(value='3') 3
-                            option(value='4') 4
-                      .col-xs-12
-                        input.btn.btn-primary.btn-block(type='submit', value='Search Hotel')
-                  #packages.tab-pane(role='tabpanel')
-                    .row
-                      .col-xxs-12.col-xs-6.mt
-                        .input-field
-                          label(for='from') City:
-                          input#from-place.form-control(type='text', placeholder='Los Angeles, USA')
-                      .col-xxs-12.col-xs-6.mt
-                        .input-field
-                          label(for='from') Destination:
-                          input#to-place.form-control(type='text', placeholder='Tokyo, Japan')
-                      .col-xxs-12.col-xs-6.mt.alternate
-                        .input-field
-                          label(for='date-start') Departs:
-                          input#date-start.form-control(type='text', placeholder='mm/dd/yyyy')
-                      .col-xxs-12.col-xs-6.mt.alternate
-                        .input-field
-                          label(for='date-end') Return:
-                          input#date-end.form-control(type='text', placeholder='mm/dd/yyyy')
-                      .col-sm-12.mt
-                        section
-                          label(for='class') Rooms:
-                          select.cs-select.cs-skin-border
-                            option(value='', disabled='', selected='') 1
-                            option(value='economy') 1
-                            option(value='first') 2
-                            option(value='business') 3
-                      .col-xxs-12.col-xs-6.mt
-                        section
-                          label(for='class') Adult:
-                          select.cs-select.cs-skin-border
-                            option(value='', disabled='', selected='') 1
-                            option(value='1') 1
-                            option(value='2') 2
-                            option(value='3') 3
-                            option(value='4') 4
-                      .col-xxs-12.col-xs-6.mt
-                        section
-                          label(for='class') Children:
-                          select.cs-select.cs-skin-border
-                            option(value='', disabled='', selected='') 1
-                            option(value='1') 1
-                            option(value='2') 2
-                            option(value='3') 3
-                            option(value='4') 4
-                      .col-xs-12
-                        input.btn.btn-primary.btn-block(type='submit', value='Search Packages')
+                form(name='loginForm', action='/auth/join', method='POST', onsubmit="return validateForm()")
+                  .tab-content
+                    #login.tab-pane.active(role='tabpanel')
+                      .row                                            
+                        //.col-xxs-12.col-xs-6.mt.alternate
+                          .input-field
+                            label(for='date-end') Check Out:
+                            input#date-end.form-control(type='text', placeholder='mm/dd/yyyy')                      
+                        .col-sm-12.mt
+                          section
+                            label(for='account') ACCOUNT
+                            input#account(type='text', name='account', placeholder='ID를 입력하세요.')
+                        .col-sm-12.mt
+                          section
+                            label(for='password') PASSWORD
+                            input#password(type='PASSWORD', name='password', placeholder='비밀번호를 입력하세요.')
+                        .col-xxs-12.col-xs-6.mt.alternate
+                          .input-field
+                            label(for='emailid') EMAIL
+                            input#emailid(type='text', name='emailAcc', placeholder='EMAIL을 입력하세요.' style='font-size:12px;')                      
+                        .col-xxs-12.col-xs-6.mt.alternate
+                          section
+                            label(for='email') &nbsp;
+                            select.cs-select.cs-skin-border(name='emailAdd')
+                              option(value='') 메일을 선택해주세요. &nbsp;
+                              option(value='@naver.com') @naver.com
+                              option(value='@gmail.com') @gmail.com
+                        //.col-sm-12.mt
+                          section
+                            label(for='class') Class:
+                            select.cs-select.cs-skin-border
+                              option(value='', disabled='', selected='') Economy
+                              option(value='economy') Economy
+                              option(value='first') First
+                              option(value='business') Business                      
+                        .col-xs-12
+                          input.btn.btn-primary.btn-block(type='submit', value='SIGN UP!')
             .desc2.animate-box
               .col-sm-7.col-sm-push-1.col-md-7.col-md-push-1
                 p

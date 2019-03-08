@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "project1": "nodemon ./bin/www",
-    "project1D": "export DEBUG= ; nodemon ./bin/www"
+    "project1D": "export DEBUG=auth.js,index.js; nodemon ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
