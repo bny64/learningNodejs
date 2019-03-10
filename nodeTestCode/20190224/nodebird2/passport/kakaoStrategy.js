@@ -1,5 +1,5 @@
 const KakaoStrategy = require('passport-kakao').Strategy;
-
+const debug = require('debug')('kakao');
 const { User } = require('../models');
 
 module.exports = (passport) => {
@@ -8,6 +8,8 @@ module.exports = (passport) => {
     callbackURL: '/auth/kakao/callback',
   }, async (accessToken, refreshToken, profile, done) => {
     try {
+      console.log("@@@@@@@@@@@@@ : ",profile);
+      console.log("@@@@@@@@@@@", profile.displayName);
       const exUser = await User.find({ where: { snsId: profile.id, provider: 'kakao' } });
       if (exUser) {
         done(null, exUser);

@@ -8,6 +8,7 @@ const flash = require('connect-flash'); //connect flash module
 const passport = require('passport');
 //----------------------module----------------------
 const pageRouter = require('./routes/page'); //router 디렉토리의 page.js 추가
+const authRouter = require('./routes/auth');
 const {sequelize} = require('./models'); //models 디렉토리의 index.js 추가
 const passportConfig = require('./passport'); //passport 디렉토리의 index.js 추가
 
@@ -39,6 +40,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', pageRouter);
+app.use('/auth', authRouter);
 
 app.use((req, res, next)=>{
     const err = new Error('Not Found');

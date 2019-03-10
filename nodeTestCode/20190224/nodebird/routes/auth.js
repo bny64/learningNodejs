@@ -1,6 +1,7 @@
 const express = require('express');
 const passport = require('passport');
 const bcrypt = require('bcrypt');
+const debug = require('debug')('localSt');
 const {isLoggedIn, isNotLoggedIn} = require('./middlewares');
 const { User } = require('../models');
 
@@ -29,7 +30,10 @@ router.post('/join', isNotLoggedIn, async (req, res, next) => {
 
 router.post('/login', isNotLoggedIn, (req, res, next)=>{
     //첫 번째 파라미터가 local이기 때문에 local strategy로 이동.
+    debug('come in login post');
+    debug('login ', req.body.email, req.body.password);
     passport.authenticate('local', (authError, user, info)=>{
+        
         if(authError){
             console.error(authError);
             return next(authError);
@@ -52,7 +56,14 @@ router.post('/login', isNotLoggedIn, (req, res, next)=>{
 
 router.get('/logout', isLoggedIn, (req, res)=>{
     req.logout();
-    req.session.destory();
+    req.session.destroy();
+    res.redirect('/');
+})
+
+router.get('/kakao', passport.authenticate('kakao'));
+router.get('/kakao/callback', passport.authenticate('kakao', {
+    failureRedirect : '/',
+}), (req, res)=>{
     res.redirect('/');
 })
 
