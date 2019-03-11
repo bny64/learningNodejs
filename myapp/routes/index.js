@@ -1,5 +1,8 @@
+require('dotenv').config();
 var express = require('express');
 var router = express.Router();
+var path = require('path');
+var debug = require('debug')('index.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -11,9 +14,11 @@ router.get('/', function(req, res, next) {
   }
 });
 
-router.get('/login', (req, res, next)=>{
+router.get('/login', (req, res)=>{
+  debug('/login router');
   res.render('auth/login', {
-    title : 'LOGIN'
+    title : 'LOGIN',
+    basedir : path.join(process.env.ROOT, 'views')
   });
 });
 

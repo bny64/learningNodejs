@@ -1,4 +1,4 @@
-extends ../layout/auth_layout
+extends /layout/auth_layout
 
 block content
   .limiter
@@ -10,13 +10,13 @@ block content
         div
           a.btn-login-with.bg1.m-b-10(href='#')
             i.fa.fa-facebook-official
-            | 							페이스북으로 로그인
+            | 							Login with facebook
           a.btn-login-with.bg2.m-b-10(href='#')
             i.fa.fa-twitter
-            | 							트위터로 로그인
+            | 							Login with twitter
           a.btn-login-with.bg3(href='#')
             i.fa.fa-weixin
-            | 							위챗으로 로그인
+            | 							Login with wechat
         .text-center.p-t-55.p-b-30
           span.txt1
             | Login with email
@@ -36,3 +36,4 @@ block content
             | Don’t have an account?
           a.txt3.bo1.hov1(href='#')
             | Sign up now
+  script(src='/js/auth/login.js')

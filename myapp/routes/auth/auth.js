@@ -33,4 +33,10 @@ router.post('/join', async (req, res)=>{
     }
 });
 
+router.get('/join', (req, res)=>{
+    res.render('auth/join',{
+        title : 'JOIN'
+    });
+});
+
 module.exports = router;
