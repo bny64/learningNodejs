@@ -1,12 +1,14 @@
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
+const debug = require('debug')('localSt');
 
 const { User } = require('../models');
 
 module.exports = (passport) => {
+    debug('comin localSt');
     passport.use(new LocalStrategy({
         usernameField : 'email',
-        passwordField:'passoword',
+        passwordField:'password',
         //옵션 객체 뒤 함수는 옵션에서 정의한 프로퍼티
         // usernameField : 'email' -> email
         // passwordField:'passoword' -> password
@@ -16,6 +18,7 @@ module.exports = (passport) => {
             const exUser = await User.find({where:{email}});
             if(exUser){
                 //비밀번호 비교.
+               
                 const result = await bcrypt.compare(password, exUser.password);
                 if(result){
                     //결과가 맞으면 user 리턴
