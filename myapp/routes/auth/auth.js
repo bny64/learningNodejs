@@ -1,10 +1,12 @@
+require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-const { User } = require('../models');
+const { User } = require('../../models');
 const crypto = require('crypto');
 const debug = require('debug')('auth.js');
 
+//회원가입 submit
 router.post('/join', async (req, res)=>{
     const {account, password, emailAcc, emailAdd} = req.body;
     const userKey = crypto.createHash('sha256').update(account).digest("hex");
@@ -33,9 +35,12 @@ router.post('/join', async (req, res)=>{
     }
 });
 
+//회원가입 페이지 이동.
 router.get('/join', (req, res)=>{
+    debug('/join get');
     res.render('auth/join',{
-        title : 'JOIN'
+        title : 'JOIN',
+        basedir : path.join(process.env.ROOT, 'views')
     });
 });
 

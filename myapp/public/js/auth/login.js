@@ -64,7 +64,7 @@
         let findI = btnShowPass.querySelector('i');
         if(showPass===0){            
             nextIpt.setAttribute('type', 'text');
-            if(findI.classList){
+            if(findI.classList){ //IE 10이상
                 findI.classList.remove('fa-eye');
                 findI.classList.add('fa-eye-slash');
             }else{
