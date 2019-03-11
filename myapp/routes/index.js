@@ -7,8 +7,14 @@ router.get('/', function(req, res, next) {
     delete req.session.joinCheck;
     res.render('index', {title : 'BNY', joinCheck:true});
   }else{
-    res.render('index', { title: 'BNY' });
+    res.render('index', { title: 'BNY', joinCheck:false});
   }
+});
+
+router.get('/login', (req, res, next)=>{
+  res.render('auth/login', {
+    title : 'LOGIN'
+  });
 });
 
 module.exports = router;
