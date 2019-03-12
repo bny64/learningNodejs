@@ -28,7 +28,8 @@
             }
         }else{
             if(input.value.trim() == ''){
-                return false;
+                alert('공백은 입력할 수 없습니다.');
+                return;
             }
         }
     }
