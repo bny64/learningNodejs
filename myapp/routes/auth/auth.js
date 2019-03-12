@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const { User } = require('../../models');
 const crypto = require('crypto');
 const debug = require('debug')('auth.js');
+const path = require('path');
 
 //회원가입 submit
 router.post('/join', async (req, res)=>{
@@ -42,6 +43,7 @@ router.get('/join', (req, res)=>{
         title : 'JOIN',
         basedir : path.join(process.env.ROOT, 'views')
     });
+    
 });
 
 module.exports = router;

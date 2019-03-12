@@ -14,12 +14,14 @@ router.get('/', function(req, res, next) {
   }
 });
 
+//로그인 페이지 이동
 router.get('/login', (req, res)=>{
   debug('/login router');
   res.render('auth/login', {
     title : 'LOGIN',
     basedir : path.join(process.env.ROOT, 'views')
   });
+  
 });
 
 module.exports = router;

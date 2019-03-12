@@ -1,13 +1,16 @@
-extends ../layout/auth_layout
+extends /layout/auth_layout
 
 block content
-  form.login100-form.validate-form
-        span.login100-form-title.p-b-40
+  .limiter
+  .container-login100
+    .wrap-login100.p-b-30
+      form.login100-form.validate-form
+        span.login100-form-title
           | Join
-        div         
+        div          
         .text-center.p-t-55.p-b-30
           span.txt1
-            | CREATE YOUR ACCOUNT
+            | Create your account
         .wrap-input100.validate-input.m-b-16(data-validate='Please enter email: ex@abc.xyz')
           input.input100(type='text', name='email', placeholder='Email')
           span.focus-input100
@@ -16,9 +19,13 @@ block content
             i.fa.fa.fa-eye
           input.input100(type='password', name='pass', placeholder='Password')
           span.focus-input100
-        .wrap-input100.validate-input.m-b-20(data-validate='Please enter your name')
-          input.input100(type='text', name='name', placeholder='Name')
+        .wrap-input100.validate-input.m-b-16(data-validate='Please enter your name')
+          input.input100(type='text', name='name', placeholder='name')
+          span.focus-input100
+        .wrap-input100.validate-input.m-b-16(data-validate='Please enter your age')
+          input.input100(type='number', name='age', placeholder='age')
           span.focus-input100
         .container-login100-form-btn
-          button.login100-form-btn
-            | Join        
+          button.login100-form-btn(style='margin-top:40px;')
+            | Join             
+  script(src='/js/auth/join.js')

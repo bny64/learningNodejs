@@ -7,7 +7,7 @@ var session = require('express-session');
 
 const {sequelize} = require('./models');
 var indexRouter = require('./routes/index');
-var authRouter = require('./routes/auth');
+var authRouter = require('./routes/auth/auth');
 var usersRouter = require('./routes/users');
 
 var app = express();
@@ -18,7 +18,12 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('scripts', path.join(__dirname, 'scripts'));
 app.set('view engine', 'pug');
 
-app.use(logger('dev'));
+//app.use(logger('dev'));
+app.use(logger('combined', { //400이하일 때 skip
+  skip:function(req, res){
+    return res.statusCode < 400;
+  }
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
