@@ -17,13 +17,13 @@ fs.readdir('uploads', error=>{
 })
 
 const upload = multer({
-    storage : multer.diskStorage({
-        destination(req, res, cb){
+    storage : multer.diskStorage({ //파일 저장방식, 경로, 파일명 설정
+        destination(req, res, cb){ //저장경로
             cb(null, 'uploads/');
         },
         filename(req, res, cb){
             const ext = path.extname(file.originalname);
-            cb(null, path.basename(file.originalname, ext) + new Date().valueOf() + ext);
+            cb(null, path.basename(file.originalname, ext) + new Date().valueOf() + ext);//파일 이름
         },
     }),
     limits:{fileSize:5*1024*1024},
