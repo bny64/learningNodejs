@@ -39,13 +39,13 @@ router.post('/join', async (req, res)=>{
 //회원가입 페이지 이동.
 router.get('/join', (req, res)=>{
     debug('router.get /join');
-
     let renderData = {
         title : 'JOIN',
         basedir : path.join(process.env.ROOT, 'views')
     };
 
-    if(req.flash('joinError')) renderData.message = req.flash('joinError');
+    const flashMsg = req.flash('joinError');
+    if(flashMsg[0]) renderData.message = flashMsg[0];
 
     res.render('auth/join',renderData);
     

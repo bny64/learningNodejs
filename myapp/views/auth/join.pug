@@ -1,9 +1,6 @@
 extends /layout/auth_layout
 
-block content
-  if message
-    .script      
-      alert(message)
+block content  
   .limiter
   .container-login100
     .wrap-login100.p-b-30
@@ -31,4 +28,7 @@ block content
         .container-login100-form-btn
           button.login100-form-btn(style='margin-top:40px;')
             | Join
+  if message
+    script(type="text/javascript").
+      alert("#{message}")
   script(src='/js/auth/join.js')
