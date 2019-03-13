@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
+var flash = require('connect-flash');
 
 const {sequelize} = require('./models');
 var indexRouter = require('./routes/index');
@@ -34,6 +35,8 @@ app.use(session({
   saveUninitialized: true,
   secret:'!@BNY!@'
 }));
+app.use(flash());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);

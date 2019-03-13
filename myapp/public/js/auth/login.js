@@ -6,7 +6,7 @@
         let check = true;
 
         [].forEach.call(input, (element)=>{
-            if(validate(element)===false){
+            if(!validate(element)){
                 showValidate(element);
                 check=false;
             }
@@ -45,8 +45,6 @@
 
     function hideValidate(input) {
         let thisAlert = input.parentNode;
-
-        $(thisAlert).removeClass('alert-validate');
 
         if (thisAlert.classList){
             thisAlert.classList.remove('alert-validate');

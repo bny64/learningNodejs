@@ -1,10 +1,13 @@
 extends /layout/auth_layout
 
 block content
+  if message
+    .script      
+      alert(message)
   .limiter
   .container-login100
     .wrap-login100.p-b-30
-      form.login100-form.validate-form
+      form.login100-form.validate-form(action="/auth/join", method="POST")
         span.login100-form-title
           | Join
         div          
@@ -27,5 +30,5 @@ block content
           span.focus-input100
         .container-login100-form-btn
           button.login100-form-btn(style='margin-top:40px;')
-            | Join             
+            | Join
   script(src='/js/auth/join.js')

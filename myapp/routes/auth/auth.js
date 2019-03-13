@@ -7,28 +7,28 @@ const crypto = require('crypto');
 const debug = require('debug')('auth.js');
 const path = require('path');
 
+debug('router is loaded');
 //회원가입 submit
 router.post('/join', async (req, res)=>{
-    const {account, password, emailAcc, emailAdd} = req.body;
-    const userKey = crypto.createHash('sha256').update(account).digest("hex");
+    debug('router.post /join');
+    const {email, pass, name, age} = req.body;
+    const userKey = crypto.createHash('sha256').update(email).digest("hex");
     try{
-
-        debug(`info : ${account}, ${password}, ${emailAcc + emailAdd}, ${userKey}`);
-        const exUser = await User.find({where:{userId:account}});
+        const exUser = await User.find({where:{email:email}});
         if(exUser){
-            req.flash('joinError', '이미 가입된 ID입니다.');
-            return res.redirect('/');
+            req.flash('joinError', '이미 가입된 EMAIL 입니다.');
+            return res.redirect('/auth/join');
         }
-        debug(`password : ${password}`);
-        const hash = await bcrypt.hash(password, 12);
-        debug(`hash : ${hash}`);
+        const hash = await bcrypt.hash(pass, 12);
         await User.create({
-            userId : account,
+            email : email,
             userPass : hash,
-            email : emailAcc + emailAdd,
+            userName : name,
+            age : age,
             userKey,
         });
-        req.session.joinCheck = true;
+
+        req.flash('joinSuccess', '가입에 성공했습니다.');
         return res.redirect('/');
 
     }catch(error){
@@ -38,11 +38,16 @@ router.post('/join', async (req, res)=>{
 
 //회원가입 페이지 이동.
 router.get('/join', (req, res)=>{
-    debug('/join get');
-    res.render('auth/join',{
+    debug('router.get /join');
+
+    let renderData = {
         title : 'JOIN',
         basedir : path.join(process.env.ROOT, 'views')
-    });
+    };
+
+    if(req.flash('joinError')) renderData.message = req.flash('joinError');
+
+    res.render('auth/join',renderData);
     
 });
 
