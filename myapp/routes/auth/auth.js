@@ -14,7 +14,7 @@ router.post('/join', async (req, res)=>{
     const {email, pass, name, age} = req.body;
     const userKey = crypto.createHash('sha256').update(email).digest("hex");
     try{
-        const exUser = await User.find({where:{email:email}});
+        const exUser = await User.findOne({where:{email:email}});
         if(exUser){
             req.flash('joinError', '이미 가입된 EMAIL 입니다.');
             return res.redirect('/auth/join');
