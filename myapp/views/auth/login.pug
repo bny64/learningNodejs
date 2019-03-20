@@ -4,7 +4,7 @@ block content
   .limiter
   .container-login100
     .wrap-login100.p-t-90.p-b-30
-      form.login100-form.validate-form
+      form.login100-form.validate-form(action="/auth/login", method="POST")
         span.login100-form-title.p-b-40
           | Login
         div
@@ -36,4 +36,7 @@ block content
             | Don’t have an account?
           a.txt3.bo1.hov1(href='/auth/join')
             | Sign up now
+  if message
+    script(type="text/javascript").
+      alert("#{message}")
   script(src='/js/auth/login.js')

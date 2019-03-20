@@ -10,9 +10,12 @@ const {sequelize} = require('./models');
 var indexRouter = require('./routes/index');
 var authRouter = require('./routes/auth/auth');
 var usersRouter = require('./routes/users');
+var passport = require('passport');
+var passportConfig = require('./passport');
 
 var app = express();
 sequelize.sync();
+passportConfig(passport);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -36,6 +39,9 @@ app.use(session({
   secret:'!@BNY!@'
 }));
 app.use(flash());
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
