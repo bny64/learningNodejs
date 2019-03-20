@@ -9,6 +9,22 @@ const path = require('path');
 
 debug('router is loaded');
 //회원가입 submit
+
+router.post('/login', async(req, res)=>{
+    //await
+    const {email, pass} = req.body;
+    const userKey = crypto.createHash('sha256').update(email).digest("hex");
+    try{
+        const exUser = await User.findOne({where:{email, userPass:pass}});
+        //해당하는 사용자 없음.
+        if(!exUser){
+
+        }
+    }catch(err){
+
+    }
+});
+
 router.post('/join', async (req, res)=>{
     debug('router.post /join');
     const {email, pass, name, age} = req.body;
