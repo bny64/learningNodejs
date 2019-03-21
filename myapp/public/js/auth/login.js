@@ -84,8 +84,12 @@
         }
     });
     
-    document.querySelectorAll('#facebookBtn, #twitterBtn, #wechatBtn').addEventListener('click', ()=>{
-        alert('서비스 준비중 입니다.');
+    const socials = document.querySelectorAll('#facebookBtn, #twitterBtn, #wechatBtn');
+    
+    [].forEach.call(socials, (element)=>{
+        element.addEventListener('click', ()=>{
+            alert('서비스 준비중 입니다.');
+        });
     });
 
 })();

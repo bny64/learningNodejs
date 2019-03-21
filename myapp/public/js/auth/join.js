@@ -9,6 +9,7 @@
         let submitFlag = false;
         e.preventDefault();
 
+        //[].forEach.call(input, (element)=>{}); 아래와 같음.
         input.forEach((e)=>{
             const targetNode = e.parentNode;
             if(targetNode.classList){
