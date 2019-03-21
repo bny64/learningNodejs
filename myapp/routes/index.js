@@ -25,11 +25,15 @@ router.get('/', function(req, res, next) {
 router.get('/login', (req, res)=>{
 
   debug('router.get /login');
-
-  res.render('auth/login', {
+  
+  let renderData = {
     title : 'LOGIN',
     basedir : path.join(process.env.ROOT, 'views')
-  });
+  }
+
+  const flashMsg = req.flash('message');
+  if(flashMsg[0]) renderData.message = flashMsg[0];
+  res.render('auth/login', renderData);
   
 });
 

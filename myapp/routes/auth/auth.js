@@ -7,6 +7,8 @@ const { User } = require('../../models');
 const crypto = require('crypto');
 const debug = require('debug')('router_auth.js');
 const path = require('path');
+const {isLoggedIn, isNotLoggedIn} = require('../middlewares');
+
 
 debug('router is loaded');
 
@@ -21,7 +23,7 @@ router.post('/login', async(req, res, next)=>{
 
         if(!user){
             req.flash('message', info.message);
-            return res.redirect('/auth/login');
+            return res.redirect('/login');
         }
 
         debug('before req.login()');
@@ -38,8 +40,14 @@ router.post('/login', async(req, res, next)=>{
     })(req, res, next);
 });
 
+router.post('/logout', (req, res, next)=>{
+    req.logout();
+    req.session.destroy();
+    res.redirect('/');
+});
+
 //회원가입
-router.post('/join', async (req, res)=>{
+router.post('/join', isNotLoggedIn, async (req, res)=>{
     debug('router.post /join');
     const {email, pass, name, age} = req.body;
     const userKey = crypto.createHash('sha256').update(email).digest("hex");        

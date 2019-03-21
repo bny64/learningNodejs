@@ -13,9 +13,9 @@ header#fh5co-header-section.sticky-banner
           if !user
             li
               a(href='/login') Login
-          else
+          else            
             li
-              a(href='#') Logout
+              a#logoutBtn(href='#') Logout
           li.active
             a(href='index.html') Home
           li
@@ -41,3 +41,4 @@ header#fh5co-header-section.sticky-banner
             a(href='blog.html') Blog
           li
             a(href='contact.html') Contact
+script(src='/js/layout/header.js')

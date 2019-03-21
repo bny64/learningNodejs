@@ -84,4 +84,8 @@
         }
     });
     
+    document.querySelectorAll('#facebookBtn, #twitterBtn, #wechatBtn').addEventListener('click', ()=>{
+        alert('서비스 준비중 입니다.');
+    });
+
 })();
