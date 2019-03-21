@@ -10,6 +10,7 @@ const middleware = {
         }
     },
     isNotLoggedIn(req, res, next){
+        debug('isNotLoggedIn');
         if(!req.isAuthenticated()){
             next();
         }else{

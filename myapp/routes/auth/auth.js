@@ -26,7 +26,6 @@ router.post('/login', async(req, res, next)=>{
             return res.redirect('/login');
         }
 
-        debug('before req.login()');
         return req.login(user, (loginError)=>{
             debug('after req.login()');
             if(loginError){
@@ -34,7 +33,7 @@ router.post('/login', async(req, res, next)=>{
                 return next(loginError);
             }
             
-            req.flash('message', '로그인에 성공했습니다.');
+            req.flash('message', '로그인되었습니다.');
             return res.redirect('/');
         });
     })(req, res, next);
