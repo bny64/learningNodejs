@@ -39,11 +39,11 @@ app.use(session({
   secret:'!@BNY!@'
 }));
 app.use(flash());
+//순서중요 static 경로 설정후 passport 사용
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(passport.initialize());
 app.use(passport.session());
-
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);

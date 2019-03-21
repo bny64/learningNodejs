@@ -11,7 +11,7 @@ module.exports = (passport) => {
     passport.deserializeUser((email, done)=>{
         debug(`email : ${email}`);
         User.findOne({where:{email}})
-        .then(user=>done(null, user))
+        .then(user=>done(false, user))
         .catch(err=>done(err));
     });
 
