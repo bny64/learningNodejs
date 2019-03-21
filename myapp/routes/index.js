@@ -2,7 +2,7 @@ require('dotenv').config();
 var express = require('express');
 var router = express.Router();
 var path = require('path');
-var debug = require('debug')('index.js');
+var debug = require('debug')('router_index.js');
 
 /* GET home page. */
 debug('router is loaded');

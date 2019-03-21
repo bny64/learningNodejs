@@ -5,7 +5,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../../models');
 const crypto = require('crypto');
-const debug = require('debug')('auth.js');
+const debug = require('debug')('router_auth.js');
 const path = require('path');
 
 debug('router is loaded');
@@ -13,6 +13,7 @@ debug('router is loaded');
 //로그인
 router.post('/login', async(req, res, next)=>{
     passport.authenticate('local', (authError, user, info)=>{
+        debug('after local strategy');
         if(authError){
             console.error(authError);
             return next(authError);
@@ -23,7 +24,9 @@ router.post('/login', async(req, res, next)=>{
             return res.redirect('/auth/login');
         }
 
+        debug('before req.login()');
         return req.login(user, (loginError)=>{
+            debug('after req.login()');
             if(loginError){
                 console.error(loginError);
                 return next(loginError);

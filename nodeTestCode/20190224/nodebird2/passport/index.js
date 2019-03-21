@@ -1,20 +1,22 @@
 const local = require('./localStrategy');
 const kakao = require('./kakaoStrategy');
 const {User} = require('../models');
-const debug = require('debug')('check');
+const debug = require('debug')('passport_index.js');
 
 //passport 파라미터는 passport 모듈
 //app.js의 passportConfig에 passport.serializeUser, deserializeUser 정의.
 //로그인시와 로그인 후 페이지 이동할 때의 미들웨어 정의.
-module.exports = (passport) => {
-    debug('index.js');
+module.exports = (passport) => {    
     //로그인 성공시 request.session.passport.user에 저장함.
     passport.serializeUser((user, done) =>{
+        debug('passport.serializeUuser');
         done(null, user.id);
+        debug('send userInfo to deserializeuser?');
     });
 
     //서버에 들어오는 요청마다 세션 정보를 실제 db와 비교하고 해당하는 유저정보가 있으면 두 번째 파라미터에 user를 저장하고 넘겨줌.
     passport.deserializeUser((id, done) => {
+        debug('passport.deserializeUser');
         User.find({where:{id}})
             .then(user=> done(null, user))
             .catch(err => done(err));

@@ -1,7 +1,7 @@
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
-
 const { User } = require('../models');
+const debug = require('debug')('passport_localStrategy.js');
 
 module.exports = (passport) => {
     passport.use(new LocalStrategy({
@@ -14,6 +14,7 @@ module.exports = (passport) => {
         try {
             //db에서 email로 유저를 찾음.
             const exUser = await User.find({where:{email}});
+            debug('local Strategy');
             if(exUser){
                 //비밀번호 비교.
                 const result = await bcrypt.compare(password, exUser.password);
