@@ -10,8 +10,12 @@ header#fh5co-header-section.sticky-banner
       // START #fh5co-menu-wrap
       nav#fh5co-menu-wrap(role='navigation')
         ul#fh5co-primary-menu.sf-menu
-          li
-            a(href='/login') Login
+          if !user
+            li
+              a(href='/login') Login
+          else            
+            li
+              a#logoutBtn(href='#') Logout
           li.active
             a(href='index.html') Home
           li
@@ -37,3 +41,4 @@ header#fh5co-header-section.sticky-banner
             a(href='blog.html') Blog
           li
             a(href='contact.html') Contact
+script(src='/js/layout/header.js')

@@ -3,7 +3,7 @@ const passport = require('passport');
 const bcrypt = require('bcrypt');
 const {isLoggedIn, isNotLoggedIn} = require('./middlewares');
 const { User } = require('../models');
-const debug = require('debug')('auth.js');
+const debug = require('debug')('router_auth.js');
 
 const router = express.Router();
 router.post('/join', async (req, res, next) => {
@@ -42,6 +42,7 @@ router.post('/login', isNotLoggedIn, (req, res, next)=>{
             return res.redirect('/');
         }
 
+        debug('before req.login()');
         return req.login(user, (loginError)=>{
             if(loginError){
                 console.error(loginError);

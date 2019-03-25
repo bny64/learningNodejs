@@ -28,7 +28,9 @@ router.post('/join', isNotLoggedIn, async (req, res, next) => {
     }
 })
 
+//첫 로그인시 isNotLoggedIn 호출
 router.post('/login', isNotLoggedIn, (req, res, next)=>{
+    //isNotLoggedIn에서 인증이 되어 있지 않기 때문에 next()함수인 여기로 넘어옴.
     //첫 번째 파라미터가 local이기 때문에 local strategy로 이동.
     debug('come in login post');
     debug('login ', req.body.email, req.body.password);
