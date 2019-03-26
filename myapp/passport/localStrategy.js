@@ -8,7 +8,6 @@ module.exports = (passport) => {
         "usernameField" : 'email',
         "passwordField" : 'pass'
     }, async(email, pass, done)=>{
-        debug(`email : ${email}, pass:${pass}`);
         try{
             const exUser = await User.findOne({where:{email}});
             if(exUser){

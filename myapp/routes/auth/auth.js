@@ -9,7 +9,6 @@ const debug = require('debug')('router_auth.js');
 const path = require('path');
 const {isLoggedIn, isNotLoggedIn} = require('../middlewares');
 
-
 debug('router is loaded');
 
 //로그인
@@ -76,7 +75,7 @@ router.post('/join', isNotLoggedIn, async (req, res)=>{
 });
 
 //회원가입 페이지 이동.
-router.get('/join', (req, res)=>{
+router.get('/join', isNotLoggedIn, (req, res)=>{
     debug('router.get /join');
     let renderData = {
         title : 'JOIN',
