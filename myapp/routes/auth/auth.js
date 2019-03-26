@@ -12,7 +12,7 @@ const {isLoggedIn, isNotLoggedIn} = require('../middlewares');
 debug('router is loaded');
 
 //로그인
-router.post('/login', async(req, res, next)=>{
+router.post('/login', isNotLoggedIn, async(req, res, next)=>{
     passport.authenticate('local', (authError, user, info)=>{
         debug('after local strategy');
         if(authError){
@@ -38,7 +38,7 @@ router.post('/login', async(req, res, next)=>{
     })(req, res, next);
 });
 
-router.post('/logout', (req, res, next)=>{
+router.post('/logout', isLoggedIn, (req, res, next)=>{
     req.logout();
     req.session.destroy();
     res.redirect('/');

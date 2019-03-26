@@ -2,6 +2,7 @@ require('dotenv').config();
 var express = require('express');
 var router = express.Router();
 var path = require('path');
+const {isLoggedIn, isNotLoggedIn} = require('../middlewares');
 var debug = require('debug')('router_index.js');
 
 /* GET home page. */
@@ -22,7 +23,7 @@ router.get('/', function(req, res, next) {
 });
 
 //로그인 페이지 이동
-router.get('/login', (req, res)=>{
+router.get('/login', isNotLoggedIn, (req, res)=>{
 
   debug('router.get /login');
   
