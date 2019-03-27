@@ -28,7 +28,8 @@ router.get('/', (req, res, next)=>{
         order:[['createdAt', 'DESC']]
     })
     .then((posts)=>{
-        debug(posts);
+        debug(`posts:${posts}`);
+        debug(`req.user:${req.user}`);        
         res.render('main',{
             title : 'NodeBird',
             twits:posts,
