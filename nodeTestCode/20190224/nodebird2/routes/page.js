@@ -19,14 +19,16 @@ router.get('/join', isNotLoggedIn, (req, res)=>{
 })
 
 router.get('/', (req, res, next)=>{
+    debug('router.get');
     Post.findAll({
         include:{
             model:User,
-            attributes:['id', nick],
+            attributes:['id', 'nick'],
         },
         order:[['createdAt', 'DESC']]
     })
     .then((posts)=>{
+        debug(posts);
         res.render('main',{
             title : 'NodeBird',
             twits:posts,
@@ -35,6 +37,7 @@ router.get('/', (req, res, next)=>{
         });
     })
     .catch((error)=>{
+        debug('arrive at catch');
         console.error(error);
         next(error);
     });

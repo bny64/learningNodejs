@@ -3,7 +3,7 @@ extends /layout/layout
 block content
   .fh5co-hero
     .fh5co-overlay
-      .tabulation.animate-box(style='margin-top:3em; width:35%; margin-left:3em; height:85%')
+      .tabulation.animate-box(style='margin-top:3em; width:25%; margin-left:3em; height:85%')
         // Nav tabs
         ul.nav.nav-tabs(role='tablist')
           
@@ -19,8 +19,22 @@ block content
                     option(value='economy') LINEAREA
                     option(value='first') CANDLE
                     option(value='business') BAR
-              .col-xxs-12.mt
-                label 데이터 타입
+              .col-xxs-12.col-xs-6.mt
+                section
+                  label 데이터 타입
+                  div
+                    label 갯수
+                      input.far.fa-check-circle(type='radio')
+                    label 기간
+                      input(type='radio')
+              .col-xxs-12.col-xs-6.mt
+                section
+                  label 데이터 타입
+                  div
+                    label 갯수
+                      input.far.fa-check-circle(type='radio')
+                    label 기간
+                      input(type='radio')
               .col-xxs-12.col-xs-6.mt
                 .input-field
                   label(for='from') 데이터 최소 갯수

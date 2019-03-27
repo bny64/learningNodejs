@@ -18,10 +18,10 @@ fs.readdir('uploads', error=>{
 
 const upload = multer({
     storage : multer.diskStorage({ //파일 저장방식, 경로, 파일명 설정
-        destination(req, res, cb){ //저장경로
+        destination(req, file, cb){ //저장경로
             cb(null, 'uploads/');
         },
-        filename(req, res, cb){
+        filename(req, file, cb){
             const ext = path.extname(file.originalname);
             cb(null, path.basename(file.originalname, ext) + new Date().valueOf() + ext);//파일 이름
         },
@@ -56,4 +56,27 @@ router.post('/', isLoggedIn, upload2.none(), async (req, res, next)=>{
         next(error);
     }
 });
+
+router.get('/hashtag', async(req, res, next)=>{
+    const query = req.query.hashtag;
+    if(!query){
+        return res.redirect('/');
+    }
+
+    try {
+        const hashtag = await Hashtag.find({where:{title:query}});
+        let posts = [];
+        if(hashtag){
+            posts = await hashtag.getPosts({include:[{model:User}]});
+        }
+        return res.render('main',{
+            title : `${query} | NodrBird`,
+            user : req.user,
+            twits : posts,
+        });
+    }catch(error){
+        console.error(error);
+        return next(error);
+    }
+})
 module.exports = router;

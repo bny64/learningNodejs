@@ -10,6 +10,8 @@ const debug = require('debug')('app.js');
 //----------------------module----------------------
 const pageRouter = require('./routes/page'); //router 디렉토리의 page.js 추가
 const authRouter = require('./routes/auth');
+const postRouter = require('./routes/post');
+const userRouter = require('./routes/user');
 const {sequelize} = require('./models'); //models 디렉토리의 index.js 추가
 const passportConfig = require('./passport'); //passport 디렉토리의 index.js 추가
 
@@ -23,6 +25,7 @@ app.set('port', process.env.PORT || 8001);
 
 app.use(morgan('dev')); //logger morgan 사용
 app.use(express.static(path.join(__dirname, 'public'))); //public 폴더를 static으로 사용
+app.use('/img', express.static(path.join(__dirname, 'uploads')));
 app.use(express.json()); //bodyParser를 json형태로 변환
 app.use(express.urlencoded({extended:false})); //url encode
 app.use(cookieParser(process.env.COOKIE_SECRET)); //cookie 사용
@@ -42,6 +45,8 @@ app.use(passport.session());
 debug('before router');
 app.use('/', pageRouter);
 app.use('/auth', authRouter);
+app.use('/post',postRouter);
+app.use('/user',userRouter);
 debug('after router');
 
 app.use((req, res, next)=>{
