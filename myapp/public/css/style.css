@@ -381,8 +381,7 @@ figure {
   top: 0;
   left: 0;
   font-size: 16px;
-  color: #F78536;
-  background: rgba(0, 0, 0, 0.06);
+  color: #F78536;  
   padding: 10px;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
