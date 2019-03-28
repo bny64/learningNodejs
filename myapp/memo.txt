@@ -1,0 +1,2 @@
+리눅스에서 pm2와 debug 모듈 같이 실행할 때
+- export DEBUG="옵션"; pm2 start 앱이름.js --name "실행할 이름" --watch
