@@ -1,0 +1,1 @@
+sequelize 5.x.x 버전으로 올라오면서 where에서 undefined는 에러로 처리됨. null 처리를 하던가 다른 방법으로 예외처리를 해주어야함.

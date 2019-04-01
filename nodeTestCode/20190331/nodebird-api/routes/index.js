@@ -1,12 +1,15 @@
 const express = require('express');
 const uuidv4 = require('uuid');
 const {User, Domain} = require('../models');
+const debug = require('debug')('index.js');
 
 const router = express.Router();
 
 router.get('/', (req, res, next) => {
+    debug(`req.user : ${req.user}`);
+
     User.findOne({
-        where:{id:req.user && req.user.id},
+        where:{id:req.user && req.user.id ? req.user.id : null},
         include : {model : Domain},
     })
     .then((user)=>{
