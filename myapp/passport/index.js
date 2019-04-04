@@ -10,7 +10,7 @@ module.exports = (passport) => {
     //쿠키에서 유저정보 가져옴.
     passport.deserializeUser((email, done)=>{
         User.findOne({where:{email}})
-        .then(user=>done(false, user))
+        .then(user=>done(null, user))
         .catch(err=>done(err));
     });
 

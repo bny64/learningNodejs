@@ -45,7 +45,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(passport.initialize());
 app.use(passport.session());
-
+//코드 진행 순서 (passport) : localLogin->LocalStrategy->serializeUser->deserializeUser->localLoginResult
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/apiMenu', apiMenuRouter);

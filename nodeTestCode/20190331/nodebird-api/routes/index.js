@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get('/', (req, res, next) => {
     debug(`req.user : ${req.user}`);
-
+    
     User.findOne({
         where:{id:req.user && req.user.id ? req.user.id : null},
         include : {model : Domain},
