@@ -386,7 +386,7 @@ figure {
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   border-radius: 50%;
-  background: #efc5ca; /* Old browsers */
+  background: #1e9600; /* Old browsers */
   background: -moz-linear-gradient(left, #1e9600, #fff200, #ff0000); /* FF3.6-15 */
   background: -webkit-linear-gradient(left,#1e9600, #fff200, #ff0000); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(to right, #1e9600, #fff200, #ff0000); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
@@ -396,7 +396,7 @@ figure {
   -webkit-text-fill-color: transparent;
 }
 #fh5co-logo a {
-  background: #efc5ca; /* Old browsers */
+  background: #1e9600; /* Old browsers */
   background: -moz-linear-gradient(left, #1e9600, #fff200, #ff0000); /* FF3.6-15 */
   background: -webkit-linear-gradient(left,#1e9600, #fff200, #ff0000); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(to right, #1e9600, #fff200, #ff0000); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
@@ -2149,6 +2149,14 @@ label.lbl1 {
   margin-left : 7px;
   margin-bottom: 0px;
   vertical-align: middle;
+}
+
+div.cht1 {
+  width:60%;
+  height:45%;
+  margin-right: 6%;
+  float: right;
+  margin-top: 48px;
 }
 
 /*# sourceMappingURL=style.css.map */
