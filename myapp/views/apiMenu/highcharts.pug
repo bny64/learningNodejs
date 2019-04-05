@@ -19,22 +19,14 @@ block content
                     option(value='economy') LINEAREA
                     option(value='first') CANDLE
                     option(value='business') BAR
-              .col-xxs-12.col-xs-6.mt
+              .col-sm-12.col-xs-6.mt
                 section
                   label 데이터 타입
-                  div
-                    label 갯수
-                      input.far.fa-check-circle(type='radio')
-                    label 기간
-                      input(type='radio')
-              .col-xxs-12.col-xs-6.mt
-                section
-                  label 데이터 타입
-                  div
-                    label 갯수
-                      input.far.fa-check-circle(type='radio')
-                    label 기간
-                      input(type='radio')
+                  div                    
+                    label.lbl1(for="period") 기간
+                    input.rdbx1#period(type='radio', name="dataType" checked)
+                    label.lbl1(for="count") 갯수
+                    input.rdbx1#count(type='radio', name="dataType")              
               .col-xxs-12.col-xs-6.mt
                 .input-field
                   label(for='from') 데이터 최소 갯수
@@ -42,7 +34,7 @@ block content
               .col-xxs-12.col-xs-6.mt
                 .input-field
                   label(for='from') 데이터 최대 갯수
-                  input#to-place.form-control(type='text', placeholder='Tokyo, Japan')
+                  input#to-place.form-control(type='text', placeholder='500')
               .col-xxs-12.col-xs-6.mt.alternate(style='display:none;')
                 .input-field
                   label(for='date-start') 시작 날짜
