@@ -24,6 +24,10 @@ module.exports = (sequelize, DataTypes) => (
         userKey : {
             type : DataTypes.STRING(200),
             allowNull : false,            
+        },
+        usedType : {
+            type : DataTypes.STRING(15),
+            alloNull : false,
         }
     })
 );

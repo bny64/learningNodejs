@@ -32,7 +32,7 @@ router.post('/login', isNotLoggedIn, async(req, res, next)=>{
                 return next(loginError);
             }
             
-            req.flash('message', '로그인되었습니다.');
+            req.flash('message', '로그인되었습니다.');            
             return res.redirect('/');
         });
     })(req, res, next);
@@ -64,6 +64,7 @@ router.post('/join', isNotLoggedIn, async (req, res)=>{
             userName : name,
             age : age,
             userKey,
+            usedType : 'nodejs'
         });
         
         req.flash('message', '가입에 성공했습니다.');

@@ -108,9 +108,7 @@ function makeChart(type, dataType, start, end){
         }]
     }
 
-    if(dataType==='period'){
-        chartObject.xAxis.type = 'datetime';
-    }
+    if(dataType==='period') chartObject.xAxis.type = 'datetime';
 
     g_chart = new Highcharts.chart(chartObject);
 
