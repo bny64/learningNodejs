@@ -67,7 +67,7 @@ router.post('/join', isNotLoggedIn, async (req, res)=>{
             usedType : 'nodejs'
         });
         
-        req.flash('message', '가입에 성공했습니다.');
+        req.flash('message', '가입에 성공했습니다.\n로그인을 해주세요.');
         return res.redirect('/');
 
     }catch(error){

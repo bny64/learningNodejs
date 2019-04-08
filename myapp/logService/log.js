@@ -8,6 +8,25 @@ const connection = mysql.createConnection({
     database : config.development.database,
 });
 
+module.exports = class mysqlConnect{
+    constructor(){}
+    insertLog(email, userName){
+        connection.connect();    
+        const queryString = `INSERT INTO loginLog(email, userName, usedType) VALUES (?, ?, ?)`;
+        const params = [email, userName, 'nodejs'];
+        connection.query(queryString, params, (err, rows, fields)=>{
+            if(!err){
+                debug(rows);                      
+            }else{
+                console.error(err);
+                debug('error!!!!!!!!!');
+            }
+                
+        });
+        connection.end();
+    }
+}
+/* 
 module.exports = (email, userName)=>{    
     connection.connect();    
     const queryString = `INSERT INTO loginLog(email, userName, usedType) VALUES (?, ?, ?)`;
@@ -23,4 +42,4 @@ module.exports = (email, userName)=>{
     });
 
     connection.end();
-};
+}; */
