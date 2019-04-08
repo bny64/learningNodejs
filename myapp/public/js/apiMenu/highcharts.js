@@ -1,5 +1,8 @@
 //event
 
+document.querySelector('#date-start').value = moment().add(-3, 'months').format('MM/DD/YYYY');
+document.querySelector('#date-end').value = moment().format('MM/DD/YYYY');
+
 const dataArea = document.querySelectorAll('.dataArea');
 const dataPeriod = document.querySelectorAll('.dataPeriod');
 let g_chart = null;
@@ -42,7 +45,7 @@ document.querySelector("#makeChart").addEventListener('click', ()=>{
             range2 = document.querySelector('#maxCount').value;            
         }else if(chart_dataType==='period'){
             range1 = document.querySelector('#date-start').value;
-            range2 = document.querySelector('#end-start').value;
+            range2 = document.querySelector('#date-end').value;
             
         }
         if(!(range1 && range2)){
@@ -64,7 +67,7 @@ function makeChart(type, dataType, start, end){
         for(i;i<dataNumber; i++){
             chartData.push([i, Math.random()*99]);        }
     }else if(dataType==='period'){
-        const day = 1000*60*60*24;
+        const day = 1000*60*60*24*3;
         const startDate = Number(moment(start, 'YYYY/MM/DD'));
         const endDate = Number(moment(end, 'YYYY/MM/DD'));
         let i = startDate;
@@ -92,6 +95,9 @@ function makeChart(type, dataType, start, end){
         credits:{
             enabled : false   
         },
+        xAxis:{
+
+        },
         yAxis:{
             title : {
                 text : ''
@@ -100,6 +106,10 @@ function makeChart(type, dataType, start, end){
         series : [{
             data : chartData,
         }]
+    }
+
+    if(dataType==='period'){
+        chartObject.xAxis.type = 'datetime';
     }
 
     g_chart = new Highcharts.chart(chartObject);

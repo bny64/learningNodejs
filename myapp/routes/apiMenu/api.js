@@ -6,7 +6,7 @@ const path = require('path');
 const {isLoggedIn, isNotLoggedIn} = require('../middlewares');
 
 debug('router is loaded');
-router.get('/highcharts', isLoggedIn, (req, res)=>{
+router.get('/highcharts', (req, res)=>{
     debug(req.user);
 
     res.render('apiMenu/highcharts', {
