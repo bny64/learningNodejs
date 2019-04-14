@@ -17,7 +17,7 @@ module.exports = (passport) => {
     //서버에 들어오는 요청마다 세션 정보를 실제 db와 비교하고 해당하는 유저정보가 있으면 두 번째 파라미터에 user를 저장하고 넘겨줌.
     passport.deserializeUser((id, done) => {
         debug('passport.deserializeUser');
-        User.find({where:{id},
+        User.findOne({where:{id},
             include:[{
                 model:User,
                 attributes:['id','nick'],
