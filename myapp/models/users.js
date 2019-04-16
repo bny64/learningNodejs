@@ -1,33 +1,54 @@
 module.exports = (sequelize, DataTypes) => (
-    sequelize.define('user', {
-        index : {
-            type : DataTypes.INTEGER,
-            primaryKey:true,
-            autoIncrement:true,
-        },
-        email : {
-            type : DataTypes.STRING(30),
-            allowNull : false,
-        },        
-        userPass : {
-            type:DataTypes.STRING(200),
-            allowNull:false,
-        },
-        userName : {
-            type:DataTypes.STRING(30),
-            allowNull:false,
-        },        
-        age : {
-            type : DataTypes.INTEGER,
-            allowNull : false,
-        },
+    sequelize.define('users', {
         userKey : {
             type : DataTypes.STRING(200),
+            allowNull : false,          
+        },
+        id : {
+            type : DataTypes.STRING(20),
+            allowNull : false,
+            primaryKey : true,
+        },        
+        email : {
+            type:DataTypes.STRING(30),
+            allowNull:false,
+        },
+        password : {
+            type:DataTypes.STRING(200),
+            allowNull:false,
+        },        
+        userName : {
+            type : DataTypes.STRING(30),
+            allowNull : false,
+        },
+        createdAt : {
+            type : DataTypes.DATE,
             allowNull : false,            
         },
         usedType : {
             type : DataTypes.STRING(15),
-            alloNull : false,
+            allowNull : false,
+        },
+        phoneNumber : {
+            type : DataTypes.STRING(30),
+            allowNull : true,
+        },
+        profilePath : {
+            type : DataTypes.STRING(100),
+            allowNull : true,
+        },
+        emailYn : {
+            type : DataTypes.STRING(1),
+            allowNull : false,
+            defaultValue : 'N',
+        },
+        birth : {
+            type : DataTypes.DATEONLY,
+            allowNull : true,
+        },
+        intMySelf : {
+            type : DataTypes.TEXT,
+            allowNull : true,
         }
     })
 );
