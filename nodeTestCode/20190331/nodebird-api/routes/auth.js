@@ -10,7 +10,7 @@ router.post('/join', async (req, res, next) => {
     debug(' /join post');
     const { email, nick, password } = req.body; //body에서 email, nick, password 가져옴
     try {
-        const exUser = await User.find({where:{email}}); //user정보를 email로 가져옴.
+        const exUser = await User.findOne({where:{email}}); //user정보를 email로 가져옴.
         if(exUser){ //email로 검색한 유저가 있다면 중복 발생
             req.flash('joinError', '이미 가입된 이메일 입니다.');
             return res.redirect('/join');

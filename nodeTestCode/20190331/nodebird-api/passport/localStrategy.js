@@ -13,7 +13,7 @@ module.exports = (passport) => {
     }, async (email, password, done)=>{
         try {
             //db에서 email로 유저를 찾음.
-            const exUser = await User.find({where:{email}});
+            const exUser = await User.findOne({where:{email}});
             debug('local Strategy');
             if(exUser){
                 //비밀번호 비교.
