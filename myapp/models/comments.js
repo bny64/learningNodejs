@@ -9,10 +9,11 @@ module.exports = (sequelize, DataTypes) => (
         id : {
             type : DataTypes.STRING(20),
             allowNull : false,
-            references : {
-                model : models.users,
+            /* references : {
+                model : 'users',
                 key : 'id',
-            }
+                onDelete:'cascade'
+            }, */         
         },        
         contents : {
             type:DataTypes.TEXT,
@@ -25,7 +26,14 @@ module.exports = (sequelize, DataTypes) => (
         },
         parListNo : {
             type:DataTypes.INTEGER,
-            allowNull:false,            
-        },        
+            allowNull:false,
+            /* references : {
+                model : 'boards',
+                key : 'listNo',
+                onDelete:'cascade'
+            },  */          
+        },           
+    },{
+        timestamps: false,                  
     })
 );

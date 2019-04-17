@@ -8,7 +8,12 @@ module.exports = (sequelize, DataTypes) => (
         },
         id : {
             type : DataTypes.STRING(20),
-            allowNull : false,            
+            allowNull : false,
+            /* references : {
+                model : 'users',
+                key : 'id',
+                onDelete : 'cascade'
+            },  */           
         },        
         name : {
             type:DataTypes.STRING(30),
@@ -30,6 +35,8 @@ module.exports = (sequelize, DataTypes) => (
         title : {
             type:DataTypes.STRING(100),
             allowNull:false,            
-        }
+        },        
+    },{
+        timestamps: false,                  
     })
 );

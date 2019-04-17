@@ -15,28 +15,34 @@ db.Board = require('./boards')(sequelize, Sequelize);
 db.Comment = require('./comments')(sequelize, Sequelize);
 db.UserFriend = require('./userFriends')(sequelize, Sequelize);
 
-db.User.hasMany(db.UserFriend);
-db.User.hasMany(db.Board);
-db.user.hasMany(db.Comment);
+/**
+ * 테이블의 관계는 각 해당 모델에서 정의하는 방법과 index.js에서 hasMany, hasOne등과 같은 메서드로 정의할 수 있다. 사용법은 sequelize 공식 문서 참고
+ * 이 프로젝트는 모델에서 직접 정의함.
+ * 모델에서 외래키를 정의하면 cascade 설정이 불가능한 것 같음. 그래서 index.js에서 메서드로 관계를 설정함.
+ */
 
-db.UserFriend.belongsToMany(db.User, {
+db.User.hasMany(db.UserFriend, {
     foreignKey : 'id',
-    targetKey : 'id',
+    sourceKey : 'id',
+    onDelete : 'cascade'
+});
+
+db.User.hasMany(db.Board, {
+    foreignKey : 'id',
+    sourceKey : 'id',
+    onDelete : 'cascade'
+});
+
+db.User.hasMany(db.Comment, {
+    foreignKey : 'id',
+    sourceKey : 'id',
+    onDelete : 'cascade'
 })
 
-db.Board.hasMany(db.Comment);
-db.Board.belongsToMany(db.User, {
-    foreignKey : 'id',
-    targetKey : 'id',
-});
-
-db.Comment.belongsToMany(db.Board, {
+db.Board.hasMany(db.Comment, {
     foreignKey : 'parListNo',
-    targetKey : 'listNo',
-});
-db.Comment.belongsToMany(db.User, {
-    foreignKey : 'id',
-    targetKey : 'id',
+    sourceKey : 'listNo',
+    onDelete : 'cascade'
 });
 
 module.exports = db;

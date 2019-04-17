@@ -8,7 +8,8 @@ module.exports = (sequelize, DataTypes) => (
         },
         id : {
             type : DataTypes.STRING(20),
-            allowNull : false,            
+            allowNull : false,
+                   
         },        
         friendId : {
             type:DataTypes.STRING(20),
@@ -17,6 +18,8 @@ module.exports = (sequelize, DataTypes) => (
         status : {
             type:DataTypes.STRING(3),
             allowNull:false,
-        },        
+        },       
+    },{
+        timestamps: false,                  
     })
 );
