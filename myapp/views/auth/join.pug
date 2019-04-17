@@ -31,8 +31,18 @@ block content
         .wrap-input100.validate-input.m-b-16(data-validate='Please enter your birthDay')
           input.input100#datePicker(type='text', name='birthday', placeholder='birthday')
           span.focus-input100
+        .wrap-input100.validate-input.m-b-16(data-validate='Please check button')
+          span.emailAd 이메일 수신여부
+          br
+          span.emailAd 수신합니다.
+          span
+            input(type='radio', name='emailYn')
+          br
+          span.emailAd 수신하지 않습니다.
+          span
+            input(type='radio', name='emailYn')          
         .wrap-input100.validate-input.m-b-16.datepicker(data-validate='Please enter your introduction')
-          textarea.input100#datePicker(type='text', name='introduction', placeholder='introduction')
+          textarea.input100(type='text', name='introduction', placeholder='introduction')
           span.focus-input100
         .container-login100-form-btn
           button.login100-form-btn(style='margin-top:40px;')
