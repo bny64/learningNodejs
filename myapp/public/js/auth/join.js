@@ -47,9 +47,10 @@
                 return true; 
             }
         });
-
-        if(submitFlag) document.getElementsByClassName('login100-form')[0].submit();
-
+        
+        if(submitFlag){            
+            document.getElementsByClassName('login100-form')[0].submit();
+        }else alert('nope');
     });
 
     input.forEach((e)=>{
@@ -66,6 +67,18 @@
     function validate(input){
         if(input.getAttribute('type')==='email' || input.getAttribute('name')==='email'){
             if(input.value.trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
+                return false;
+            }else{
+                return true;
+            }
+        }else if(input.getAttribute('name')==='phoneNumber'){
+            if(input.value.trim().match(/^\d{3}-\d{3,4}-\d{4}$/) === null){
+                return false;
+            }else{
+                return true;
+            }
+        }else if(input.getAttribute('name')==='birthday'){
+            if(input.value.trim().match(/^\d{4}-\d{2}-\d{2}$/) === null){
                 return false;
             }else{
                 return true;
@@ -128,7 +141,7 @@
     });
 
     document.querySelector('#loginBtn').addEventListener('click',()=>{
-        location.href = "http://49.247.211.93:9164/login";
+        location.href = "http://49.247.211.93:9001/login";
     });
 
 })();

@@ -5,7 +5,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../../models');
 const crypto = require('crypto');
-const debug = require('debug')('router_auth.js');
+const debug = require('debug')('router');
 const path = require('path');
 const {isLoggedIn, isNotLoggedIn} = require('../middlewares');
 
@@ -45,13 +45,13 @@ router.post('/logout', isLoggedIn, (req, res, next)=>{
 });
 
 //회원가입
-router.post('/join', isNotLoggedIn, async (req, res)=>{
+router.post('/join', async (req, res)=>{
     debug('router.post /join');
-    const {email, pass, name, age} = req.body;
-    const userKey = crypto.createHash('sha256').update(email).digest("hex");        
+    const {id, pass, email, name, phoneNumber, birthday, emailYn, introduction} = req.body;
+    const userKey = crypto.createHash('sha256').update(id).digest("hex");    
 
     try{
-        const exUser = await User.findOne({where:{email:email}});
+        const exUser = await User.findOne({where:{id:id}});
 
         if(exUser){
             req.flash('message', '이미 가입된 이메일 입니다.');            
@@ -59,14 +59,19 @@ router.post('/join', isNotLoggedIn, async (req, res)=>{
         }
         const hash = await bcrypt.hash(pass, 12);
         await User.create({
-            email : email,
-            userPass : hash,
-            userName : name,
-            age : age,
             userKey,
-            usedType : 'nodejs'
-        });
-        
+            id,
+            email,
+            password:pass,
+            userName:name,
+            createdAt : '',
+            usedType : 'nodejs',
+            phoneNumber,
+            emailYn,
+            birth:birthday,
+            intMySelf : introduction
+        });        
+
         req.flash('message', '가입에 성공했습니다.\n로그인을 해주세요.');
         return res.redirect('/');
 

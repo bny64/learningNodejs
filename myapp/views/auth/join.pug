@@ -11,36 +11,36 @@ block content
         .text-center.p-t-55.p-b-30
           span.txt1
             | Create your account
-        .wrap-input100.validate-input.m-b-16(data-validate='Please enter id')
+        .wrap-input100.validate-input.m-b-16(data-validate='ID를 입력하세요')
           input.input100(type='text', name='id', placeholder='ID')
           span.focus-input100
-        .wrap-input100.validate-input.m-b-20(data-validate='Please enter password')
+        .wrap-input100.validate-input.m-b-20(data-validate='비밀번호를 입력하세요')
           span.btn-show-pass
             i.fa.fa.fa-eye
-          input.input100(type='password', name='pass', placeholder='Password')
+          input.input100(type='password', name='pass', placeholder='비밀번호')
           span.focus-input100
-        .wrap-input100.validate-input.m-b-16(data-validate='Please enter email: ex@abc.xyz')
+        .wrap-input100.validate-input.m-b-16(data-validate='예시 : ex@abc.xyz')
           input.input100(type='email', name='email', placeholder='Email')
           span.focus-input100        
-        .wrap-input100.validate-input.m-b-16(data-validate='Please enter your name')
-          input.input100(type='text', name='name', placeholder='name')
+        .wrap-input100.validate-input.m-b-16(data-validate='이름을 입력하세요')
+          input.input100(type='text', name='name', placeholder='이름')
           span.focus-input100
-        .wrap-input100.validate-input.m-b-16(data-validate='Please enter your phone number')
-          input.input100(type='text', name='phoneNumber', placeholder='phoneNumber')
+        .wrap-input100.validate-input.m-b-16(data-validate='예시 : 000-0000-0000')
+          input.input100(type='text', name='phoneNumber', placeholder='휴대폰 번호')
           span.focus-input100
-        .wrap-input100.validate-input.m-b-16(data-validate='Please enter your birthDay')
+        .wrap-input100.validate-input.m-b-16(data-validate='예시 : 1919-03-01')
           input.input100#datePicker(type='text', name='birthday', placeholder='birthday')
           span.focus-input100
-        .wrap-input100.validate-input.m-b-16(data-validate='Please check button')
+        .wrap-input100.validate-input.m-b-16
           span.emailAd 이메일 수신여부
           br
           span.emailAd 수신합니다.
           span
-            input(type='radio', name='emailYn')
+            input(type='radio', name='emailYn' checked value='Y')
           br
           span.emailAd 수신하지 않습니다.
           span
-            input(type='radio', name='emailYn')          
+            input(type='radio', name='emailYn' value='N')          
         .wrap-input100.validate-input.m-b-16.datepicker(data-validate='Please enter your introduction')
           textarea.input100(type='text', name='introduction', placeholder='introduction')
           span.focus-input100
