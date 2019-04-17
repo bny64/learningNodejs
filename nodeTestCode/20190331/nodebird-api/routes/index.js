@@ -5,24 +5,24 @@ const debug = require('debug')('index.js');
 
 const router = express.Router();
 
-router.get('/', (req, res, next) => {
+router.get('/', async (req, res, next) => {
     debug(`req.user : ${req.user}`);
     
-    User.findOne({
-        where:{id:req.user && req.user.id ? req.user.id : null},
-        include : {model : Domain},
-    })
-    .then((user)=>{
+    let user = null;
+    try {
+        if(req.user){
+            user = await User.findOne({where :{id:req.user && req.user.id}, include:{model:Domain},});  
+        }
+
         res.render('login', {
             user,
             loginError : req.flash('loginError'),
             domains : user && user.domains,
         });
-    })
-    .catch((error)=>{
+    }catch(error){
         console.log(error);
         next(error);
-    })
+    }
 });
 
 router.post('/domain', (req, res, next)=>{
