@@ -21,6 +21,12 @@ db.UserFriend = require('./userFriends')(sequelize, Sequelize);
  * 모델에서 외래키를 정의하면 cascade 설정이 불가능한 것 같음. 그래서 index.js에서 메서드로 관계를 설정함.
  */
 
+ /** 
+  * hasMany ->
+  *  foreignKey : 외래키가 될 타켓 테이블의 필드
+  *  sourceKey : 외래키를 참조할 현재 테이블의 필드
+  *  onDelete : delete 옵션 
+ */
 db.User.hasMany(db.UserFriend, {
     foreignKey : 'id',
     sourceKey : 'id',

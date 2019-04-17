@@ -3,7 +3,7 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 const {isLoggedIn, isNotLoggedIn} = require('./middlewares');
-var debug = require('debug')('router_index.js');
+var debug = require('debug')('router');
 
 /* GET home page. */
 debug('router is loaded');

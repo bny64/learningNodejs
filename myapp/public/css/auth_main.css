@@ -484,3 +484,11 @@ iframe {
     padding-top: 20px
   }
 }
+
+div.datepicker {
+  height : 125px !important;
+}
+
+div > textarea.input100 {
+  height : 125px !important;
+}

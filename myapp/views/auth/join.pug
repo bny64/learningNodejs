@@ -11,19 +11,28 @@ block content
         .text-center.p-t-55.p-b-30
           span.txt1
             | Create your account
-        .wrap-input100.validate-input.m-b-16(data-validate='Please enter email: ex@abc.xyz')
-          input.input100(type='email', name='email', placeholder='Email')
+        .wrap-input100.validate-input.m-b-16(data-validate='Please enter id')
+          input.input100(type='text', name='id', placeholder='ID')
           span.focus-input100
         .wrap-input100.validate-input.m-b-20(data-validate='Please enter password')
           span.btn-show-pass
             i.fa.fa.fa-eye
           input.input100(type='password', name='pass', placeholder='Password')
           span.focus-input100
+        .wrap-input100.validate-input.m-b-16(data-validate='Please enter email: ex@abc.xyz')
+          input.input100(type='email', name='email', placeholder='Email')
+          span.focus-input100        
         .wrap-input100.validate-input.m-b-16(data-validate='Please enter your name')
           input.input100(type='text', name='name', placeholder='name')
           span.focus-input100
-        .wrap-input100.validate-input.m-b-16(data-validate='Please enter your age')
-          input.input100(type='number', name='age', placeholder='age')
+        .wrap-input100.validate-input.m-b-16(data-validate='Please enter your phone number')
+          input.input100(type='text', name='phoneNumber', placeholder='phoneNumber')
+          span.focus-input100
+        .wrap-input100.validate-input.m-b-16(data-validate='Please enter your birthDay')
+          input.input100#datePicker(type='text', name='birthday', placeholder='birthday')
+          span.focus-input100
+        .wrap-input100.validate-input.m-b-16.datepicker(data-validate='Please enter your introduction')
+          textarea.input100#datePicker(type='text', name='introduction', placeholder='introduction')
           span.focus-input100
         .container-login100-form-btn
           button.login100-form-btn(style='margin-top:40px;')
