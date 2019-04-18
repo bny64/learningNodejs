@@ -13,6 +13,7 @@ debug('#auth# router is loaded');
 
 //로그인
 router.post('/login', isNotLoggedIn, async(req, res, next)=>{
+    
     debug('before local strategy');
     passport.authenticate('local', (authError, user, info)=>{
         debug('after local strategy');
@@ -20,7 +21,6 @@ router.post('/login', isNotLoggedIn, async(req, res, next)=>{
             console.error(authError);
             return next(authError);
         }
-        debug(`${user}`);
         if(!user){
             req.flash('message', info.message);
             return res.redirect('/login');

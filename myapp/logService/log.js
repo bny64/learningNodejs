@@ -1,6 +1,6 @@
 const mysql = require('mysql2');
 const config = require('../config/config.json');
-const debug = require('debug')('log.js');
+const debug = require('debug')('log');
 const connection = mysql.createConnection({
     host : config.development.host,
     user :config.development.username,
@@ -10,10 +10,11 @@ const connection = mysql.createConnection({
 
 module.exports = class mysqlConnect{
     constructor(){}
-    insertLog(email, userName){
-        connection.connect();    
-        const queryString = `INSERT INTO loginLog(email, userName, usedType) VALUES (?, ?, ?)`;
-        const params = [email, userName, 'nodejs'];
+    insertLog(id, userName){
+        connection.connect();
+        debug(`${id}, ${userName}`);
+        const queryString = `INSERT INTO loginLog(id, userName, usedType) VALUES (?, ?, ?)`;
+        const params = [id, userName, 'nodejs'];
         connection.query(queryString, params, (err, rows, fields)=>{
             if(!err){
                 debug(rows);                      
