@@ -23,7 +23,6 @@ module.exports = (passport) => {
             if(exUser){
                 const result = await bcrypt.compare(password, exUser.password);
                 if(result){
-                    debug('before log');
                     loginLogObj.insertLog(exUser.id, exUser.userName);
                     done(null, exUser);
                 }else{

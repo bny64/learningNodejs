@@ -13,10 +13,8 @@ debug('#auth# router is loaded');
 
 //로그인
 router.post('/login', isNotLoggedIn, async(req, res, next)=>{
-    
-    debug('before local strategy');
+    debug('#auth# request(post) /auth/login');
     passport.authenticate('local', (authError, user, info)=>{
-        debug('after local strategy');
         if(authError){
             console.error(authError);
             return next(authError);
@@ -27,7 +25,6 @@ router.post('/login', isNotLoggedIn, async(req, res, next)=>{
         }
 
         return req.login(user, (loginError)=>{
-            debug('after req.login()');
             if(loginError){
                 console.error(loginError);
                 return next(loginError);
@@ -40,14 +37,15 @@ router.post('/login', isNotLoggedIn, async(req, res, next)=>{
 });
 
 router.post('/logout', isLoggedIn, (req, res, next)=>{
+    debug('#auth# request(post) /auth/logout')
     req.logout();
     req.session.destroy();
     res.redirect('/');
 });
 
 //회원가입
-router.post('/join',isLoggedIn, async (req, res)=>{
-    debug('router.post /join');
+router.post('/join', async (req, res)=>{
+    debug('#auth# request(post) /auth/join');
     const {id, pass, email, name, phoneNumber, birthday, emailYn, introduction} = req.body;
     const userKey = crypto.createHash('sha256').update(id).digest("hex");    
 
@@ -82,7 +80,7 @@ router.post('/join',isLoggedIn, async (req, res)=>{
 
 //회원가입 페이지 이동.
 router.get('/join', isNotLoggedIn, (req, res)=>{
-    debug('router.get /join');
+    debug('#auth# request(get) /auth/join');
     let renderData = {
         title : 'JOIN',
         basedir : path.join(process.env.ROOT, 'views')

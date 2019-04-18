@@ -12,12 +12,11 @@ module.exports = class mysqlConnect{
     constructor(){}
     insertLog(id, userName){
         connection.connect();
-        debug(`${id}, ${userName}`);
         const queryString = `INSERT INTO loginLog(id, userName, usedType) VALUES (?, ?, ?)`;
         const params = [id, userName, 'nodejs'];
         connection.query(queryString, params, (err, rows, fields)=>{
             if(!err){
-                debug(rows);                      
+                debug('Log is written');
             }else{
                 console.error(err);
                 debug('error!!!!!!!!!');

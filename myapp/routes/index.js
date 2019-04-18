@@ -10,11 +10,14 @@ debug('#index# router is loaded');
 
 router.get('/', function(req, res, next) {
 
-  debug('router.get /'); 
+  debug('#index# request(get) /'); 
   let renderData = {
     title : 'BNY'
   };
 
+  /**
+   * req.flash 한 번 읽으면 지워짐.
+   */
   const flashMsg = req.flash('message');
   if(flashMsg[0]) renderData.message = flashMsg[0];
   if(req.user) renderData.user = req.user;
@@ -25,7 +28,7 @@ router.get('/', function(req, res, next) {
 //로그인 페이지 이동
 router.get('/login', isNotLoggedIn, (req, res)=>{
 
-  debug('#index# router request /');
+  debug('#index# request(get) /login');
   
   let renderData = {
     title : 'LOGIN',
