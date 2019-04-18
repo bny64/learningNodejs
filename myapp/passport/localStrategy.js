@@ -1,17 +1,24 @@
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
-const debug = require('debug')('passport_localStrategy.js');
+const debug = require('debug')('passport');
 const loginLog = require('../logService/log');
 const loginLogObj = new loginLog();
 
 const {User} = require('../models');
+
+debug("#passport# localStrategy is loaded");
+
 module.exports = (passport) => {
+    debug('before passport.use');
     passport.use(new LocalStrategy({
         "usernameField" : 'id',
         "passwordField" : 'password'
     }, async(id, password, done)=>{
+        debug('in passport');
+        debug(`${id}, ${password}`)
         try{
             const exUser = await User.findOne({where:{id}});
+            debug(`${exUser}`);
             if(exUser){
                 const result = await bcrypt.compare(password, exUser.password);
                 if(result){                    

@@ -6,7 +6,7 @@ const {isLoggedIn, isNotLoggedIn} = require('./middlewares');
 var debug = require('debug')('router');
 
 /* GET home page. */
-debug('router is loaded');
+debug('#index# router is loaded');
 
 router.get('/', function(req, res, next) {
 
@@ -25,7 +25,7 @@ router.get('/', function(req, res, next) {
 //로그인 페이지 이동
 router.get('/login', isNotLoggedIn, (req, res)=>{
 
-  debug('router.get /login');
+  debug('#index# router request /');
   
   let renderData = {
     title : 'LOGIN',

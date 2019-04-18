@@ -9,17 +9,18 @@ const debug = require('debug')('router');
 const path = require('path');
 const {isLoggedIn, isNotLoggedIn} = require('../middlewares');
 
-debug('router is loaded');
+debug('#auth# router is loaded');
 
 //로그인
 router.post('/login', isNotLoggedIn, async(req, res, next)=>{
+    debug('before local strategy');
     passport.authenticate('local', (authError, user, info)=>{
         debug('after local strategy');
         if(authError){
             console.error(authError);
             return next(authError);
         }
-
+        debug(`${user}`);
         if(!user){
             req.flash('message', info.message);
             return res.redirect('/login');
@@ -45,7 +46,7 @@ router.post('/logout', isLoggedIn, (req, res, next)=>{
 });
 
 //회원가입
-router.post('/join', async (req, res)=>{
+router.post('/join',isLoggedIn, async (req, res)=>{
     debug('router.post /join');
     const {id, pass, email, name, phoneNumber, birthday, emailYn, introduction} = req.body;
     const userKey = crypto.createHash('sha256').update(id).digest("hex");    
@@ -62,9 +63,8 @@ router.post('/join', async (req, res)=>{
             userKey,
             id,
             email,
-            password:pass,
+            password:hash,
             userName:name,
-            createdAt : '',
             usedType : 'nodejs',
             phoneNumber,
             emailYn,
@@ -72,7 +72,7 @@ router.post('/join', async (req, res)=>{
             intMySelf : introduction
         });        
 
-        req.flash('message', '가입에 성공했습니다.\n로그인을 해주세요.');
+        req.flash('message', '가입에 성공했습니다. 로그인을 해주세요.');
         return res.redirect('/');
 
     }catch(error){

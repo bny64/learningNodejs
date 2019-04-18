@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "project1": "nodemon ./bin/www",
+    "project1": "export DEBUG='router'; nodemon ./bin/www",
     "project1D": "export DEBUG=router_index.js,router_auth.js,passport_index.js,passport_localStrategy.js,router_middleware.js; nodemon ./bin/www"
   },
   "dependencies": {
