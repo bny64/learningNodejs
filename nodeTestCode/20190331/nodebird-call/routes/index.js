@@ -4,8 +4,12 @@ const router = express.Router();
 
 router.get('/test', async(req, res, next)=>{
     try{
-        if(req.session.jwt){
-            const tokenResult = await axios.post('http://localhost:8002/v1/token', {
+        if(req.session.jwt){ 
+            /**
+             * axios.get ({주소, {headers:{헤더}}})
+             * axios.post (주소, {데이터})
+             */
+            const tokenResult = await axios.post('49.247.211.93:8001/v1/token', {
                 clientSecret:process.env.CLIENT_SECRET,
             });
             if(tokenResult.data && tokenResult.data.code === 200){
@@ -15,7 +19,7 @@ router.get('/test', async(req, res, next)=>{
             }
         }
     
-        const result = await axios.get('http://localhost:8002/v1/test', {
+        const result = await axios.get('49.247.211.93:8001/v1/test', {
             headers : {authorization:req.session.jwt},        
         })
         return res.json(result.data);

@@ -1,4 +1,4 @@
-const express = router('express');
+const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
@@ -7,7 +7,7 @@ require('dotenv').config();
 
 const indexRouter = require('./routes');
 
-const app = express();
+const app = express(); 
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
