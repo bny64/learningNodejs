@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get('/test', async(req, res, next)=>{
     try{
-        if(req.session.jwt){ 
+        if(req.session.jwt){
             /**
              * axios.get ({주소, {headers:{헤더}}})
              * axios.post (주소, {데이터})
