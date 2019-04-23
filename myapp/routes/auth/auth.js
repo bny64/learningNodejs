@@ -50,12 +50,20 @@ router.post('/join', async (req, res)=>{
     const userKey = crypto.createHash('sha256').update(id).digest("hex");    
 
     try{
-        const exUser = await User.findOne({where:{id:id}});
+        let exUser = await User.findOne({where:{id}});
 
+        if(exUser){
+            req.flash('message', '이미 가입된 ID 입니다.');            
+            return res.redirect('/auth/join');    
+        }
+
+        exUser = await User.findOne({where:{email}});
+        
         if(exUser){
             req.flash('message', '이미 가입된 이메일 입니다.');            
             return res.redirect('/auth/join');    
         }
+
         const hash = await bcrypt.hash(pass, 12);
         await User.create({
             userKey,
