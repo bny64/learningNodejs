@@ -1,7 +1,7 @@
 const express = require('express');
 const uuidv4 = require('uuid');
 const {User, Domain} = require('../models');
-const debug = require('debug')('index.js');
+const debug = require('debug')('router');
 
 const router = express.Router();
 
@@ -26,6 +26,7 @@ router.get('/', async (req, res, next) => {
 });
 
 router.post('/domain', (req, res, next)=>{
+    debug('index.js -> router.post /domain' + req.user);
     Domain.create({
         userId : req.user.id,
         host : req.body.host,

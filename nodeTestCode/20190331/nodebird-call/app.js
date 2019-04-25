@@ -11,7 +11,7 @@ const app = express();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-app.set('port', process.env.PORT || '8003');
+app.set('port', process.env.PORT || '8002');
 
 app.use(morgan('dev'));
 app.use(cookieParser(process.env.COOKIE_SECRET));

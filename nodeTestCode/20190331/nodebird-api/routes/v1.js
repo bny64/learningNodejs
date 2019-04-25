@@ -1,17 +1,21 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
-
+const debug = require('debug')('router');
 const {verifyToken} = require('./middlewares');
 const {Domain, User, Post, HashTag} = require('../models');
 
 const router = express.Router();
+debug('v1 router is loaded'); 
 
 router.post('/token', async (req, res)=>{
+    debug('body : ' + req.body);
     const {clientSecret} = req.body;
     try {
 
+        let domain = null;
+
         if(clientSecret){
-            const domain = await Domain.findOne({
+            domain = await Domain.findOne({
                 where: {clientSecret},
                 include:{
                     model : User,
