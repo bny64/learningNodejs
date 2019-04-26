@@ -47,8 +47,9 @@ router.post('/logout', isLoggedIn, (req, res, next)=>{
 router.post('/join', async (req, res)=>{
     debug('#auth# request(post) /auth/join');
     const {id, pass, email, name, phoneNumber, birthday, emailYn, introduction} = req.body;
-    const userKey = crypto.createHash('sha256').update(id).digest("hex");    
 
+    const hash = crypto.createHash('sha256').update(pass).digest("hex"); //password
+    const userKey = await bcrypt.hash(pass, 12); //고유서버에서만 사용하는 userKey
     try{
         let exUser = await User.findOne({where:{id}});
 
@@ -64,7 +65,7 @@ router.post('/join', async (req, res)=>{
             return res.redirect('/auth/join');    
         }
 
-        const hash = await bcrypt.hash(pass, 12);
+        
         await User.create({
             userKey,
             id,
