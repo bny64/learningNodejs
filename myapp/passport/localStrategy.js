@@ -1,11 +1,10 @@
 const LocalStrategy = require('passport-local').Strategy;
-const bcrypt = require('bcrypt');
 const debug = require('debug')('passport');
 
 const loginLog = require('../logService/log');
 const loginLogObj = new loginLog();
-const nodejsCrypto = require('../util/nodejsCrypto');
-const nodejsCryptoObj = new nodejsCrypto();
+const Security = require('../util/security');
+const security = new Security();
 
 const {User} = require('../models');
 
@@ -24,7 +23,7 @@ module.exports = (passport) => {
         try{
             const exUser = await User.findOne({where:{id}});            
             if(exUser){
-                const result = nodejsCryptoObj.compareStringHash(password, exUser.password);                
+                const result = security.compareStringHash(password, exUser.password);                
                 if(result){
                     loginLogObj.insertLog(exUser.id, exUser.userName);
                     done(null, exUser);
