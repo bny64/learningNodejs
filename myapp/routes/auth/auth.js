@@ -72,7 +72,7 @@ router.post('/join', async (req, res)=>{
             email,
             password:hash,
             userName:name,
-            usedType : 'nodejs',
+            joinedType : 'nodejs',
             phoneNumber,
             emailYn,
             birth:birthday,

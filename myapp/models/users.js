@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => (
             type : DataTypes.DATE,
             allowNull : true,            
         },
-        usedType : {
+        joinedType : {
             type : DataTypes.STRING(15),
             allowNull : false,
         },

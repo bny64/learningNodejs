@@ -20,7 +20,7 @@ module.exports = (passport) => {
         usernameField : 'id',
         passwordField : 'password'
     }, async(id, password, done)=>{        
-        try{
+        try{ 
             const exUser = await User.findOne({where:{id}});            
             if(exUser){
                 const result = security.compareStringHash(password, exUser.password);                

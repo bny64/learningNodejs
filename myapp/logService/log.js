@@ -23,7 +23,12 @@ module.exports = class mysqlConnect{
             }
                 
         });
-        connection.end();
+        /**
+         * connection.query 후 connection.end() 함수 호출시
+         * Can't add new command when connection is in closed state 에러 발생
+         * connection.query 실행후 자동으로 커넥션 닫는듯.
+         */
+        //connection.end();
     }
 }
 /* 
