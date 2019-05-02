@@ -42,33 +42,7 @@
         });
     });
 
-    /* document.querySelector('.validate-form').addEventListener('submit', ()=>{
-        let check = true;
-
-        [].forEach.call(input, (element)=>{
-            if(!validate(element)){
-                showValidate(element);
-                check=false;
-            }
-        });
-
-        return check;
-    });
-
-    [].forEach.call(input, (element)=>{
-        element.addEventListener('focus', ()=>{
-            hideValidate(element);
-        });
-    }); */
-
     function validate(input){
-        /* if(input.getAttribute('type')==='email' || input.getAttribute('name')==='email'){
-            if(input.value.trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
-                return false;
-            }else{
-                return true;
-            }
-        } */
             if(input.value.trim() == ''){
                 return false;
             }else{
@@ -133,6 +107,10 @@
         element.addEventListener('click', ()=>{
             alert('서비스 준비중 입니다.');
         });
+    });
+
+    document.querySelector("#main").addEventListener('click',()=>{
+        location.href = "http://49.247.211.93:9001/";
     });
 
 })();
