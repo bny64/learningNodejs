@@ -7,13 +7,8 @@ const {isLoggedIn, isNotLoggedIn} = require('../middlewares');
 
 debug('router is loaded');
 router.get('/highcharts', isLoggedIn, (req, res)=>{
-    debug(req.user);
-
-    res.render('apiMenu/highcharts', {
-        title : 'HIGHCHARTS',
-        user : req.user,
-        basedir:path.join(process.env.ROOT, 'views')
-    });
+    req.renderOption.title = 'HIGH CHARTS';
+    res.render('apiMenu/highcharts', req.renderOption);
 });
 
 module.exports = router;
