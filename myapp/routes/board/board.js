@@ -13,7 +13,7 @@ router.get('/boardList', isLoggedIn, (req, res)=>{
 
 router.get('/registBoard', isLoggedIn, (req, res)=>{
     req.renderOption.title = 'REGIST BOARD';
-    res.render('/board/registBoard', req.renderOption);
+    res.render('board/registBoard', req.renderOption);
 });
 
 module.exports = router;
