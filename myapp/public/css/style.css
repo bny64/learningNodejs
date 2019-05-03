@@ -2159,4 +2159,16 @@ div.cht1 {
   margin-top: 48px;
 }
 
+input.ht40 {
+  height:40px;
+}
+
+input.bdCr {
+  border-color : orange;
+}
+
+input.wd100p{
+  width:100%;
+}
+
 /*# sourceMappingURL=style.css.map */

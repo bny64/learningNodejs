@@ -4,6 +4,8 @@ const router = express.Router();
 const debug = require('debug')('router');
 const {isLoggedIn} = require('../middlewares');
 
+const path = require('path');
+
 debug('#board# router is loaded');
 
 router.get('/boardList', isLoggedIn, (req, res)=>{
@@ -11,7 +13,10 @@ router.get('/boardList', isLoggedIn, (req, res)=>{
     res.render('board/boardList', req.renderOption);
 });
 
-router.get('/registBoard', isLoggedIn, (req, res)=>{
+router.get('/registBoard', (req, res)=>{
+    req.renderOption = {        
+        basedir:path.join(process.env.ROOT, 'views')
+    };
     req.renderOption.title = 'REGIST BOARD';
     res.render('board/registBoard', req.renderOption);
 });
