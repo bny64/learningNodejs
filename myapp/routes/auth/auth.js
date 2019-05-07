@@ -64,8 +64,6 @@ router.post('/join', async (req, res)=>{
             req.flash('message', '이미 가입된 이메일 입니다.');            
             return res.redirect('/auth/join');    
         }
-
-        
         await User.create({
             userKey,
             id,

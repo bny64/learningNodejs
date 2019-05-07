@@ -20,13 +20,14 @@ module.exports = (passport) => {
         usernameField : 'id',
         passwordField : 'password'
     }, async(id, password, done)=>{        
-        try{ 
+        try{            
             const exUser = await User.findOne({where:{id}});            
             if(exUser){
                 const result = security.compareStringHash(password, exUser.password);                
                 if(result){
                     loginLogObj.insertLog(exUser.id, exUser.userName);
-                    done(null, exUser);
+                    const sessionUser = {id:exUser.id, name:exUser.userName};
+                    done(null, sessionUser);
                 }else{
                     done(null, false, {message:'비밀번호가 일치하지 않습니다.'});
                 }

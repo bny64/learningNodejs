@@ -713,7 +713,11 @@ figure {
 }
 
 .mt {
-  margin-bottom: 20px;
+  margin-bottom: 20px !important;
+}
+
+.mb20 {
+  margin-bottom: 20px !important;
 }
 
 div.cs-select span {
@@ -882,9 +886,10 @@ div.cs-select span {
   display: block;
   color: rgba(255, 255, 255, 0.9);
   margin-bottom: 5px;
+  font-size:19px;
 }
 .fh5co-tours > div .desc .price {
-  font-size: 30px;
+  font-size: 13px;
   font-weight: bold;
   color: #fff;
 }
