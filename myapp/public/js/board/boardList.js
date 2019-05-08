@@ -36,13 +36,15 @@
                 div.innerHTML = result[i].contents;
                 result[i].contents = div.innerText;
 
-                html += '<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">';
-                html += '<div href="#"><img src="/images/place-3.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">';
-                html += '<div class="desc" style="height:192px;">';
+                html += '<div class="col-md-4 col-sm-6 fh5co-tours animate-box fadeInUp animated" data-animate-effect="fadeIn">';
+                html += '<div href="#"><img class="img-responsive" src="/images/place-3.jpg" alt="Free HTML5 Website Template by FreeHTML5.co">';
+                html += '<div class="desc" style="height:270px;">';
                 html += '<span></span>';
-                html += '<h3 class="mb20">' + result[i].title + '</h3>';
+                let splitTit = result[i].title.length > 8 ? result[i].title.substring(0, 8)+'...' : result[i].title;
+                html += '<h3 class="mb20">' + splitTit + '</h3>';
                 html += '<span class="mb20">' + result[i].name + '</span>';
-                html += '<span class="price mb20">' + result[i].contents.substring(0, 10) + '</span>';
+                let splitCon = result[i].contents.length > 20 ? result[i].contents.substring(0, 20) + '...' : result[i].contents;
+                html += '<span class="price mb20">' + splitCon + '</span>';
                 html += '<a class="btn btn-primary btn-outline" href="#">상세 보기<i class="icon-arrow-right22"></i></a>';
                 html += '</div></div></div>';
 
