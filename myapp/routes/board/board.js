@@ -50,11 +50,12 @@ router.post('/registBoard', isLoggedIn, (req, res)=>{
 router.post('/getBoardList', async (req, res)=>{
 
     try{
-        const pageNo = req.body.pageNo;
+        const pageNo = req.body.pageNo;        
         const pageSize = req.body.pageSize;
+        
         const contents = await Board.findAll({
             attributes:['name', 'title','contents'],
-            offset:pageNo, 
+            offset:pageSize * (pageNo - 1),
             limit:pageSize
         });
         res.send({result:true, contents:contents});

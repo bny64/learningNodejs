@@ -5,21 +5,33 @@
     let pageSize = 9;
     let eleCount = 0;    
 
+    document.querySelector('#moreBtn').addEventListener('click', ()=>{        
+        getBoardList();
+    });
+
     getBoardList();
 
     function getBoardList(){
-        const formData = new FormData();
+        const sendData = {};
         const xhr = new XMLHttpRequest();
+        //혹은 ie10이상
+        /* 
+        const formData = new FormData();
+        formData.append(pageNo, pageNo);
+        formData.append(pageSize, pageSize);
+        xhr.send(formData);
 
-        formData.append('pageNo', pageNo);
-        formData.append('pageSize', pageSize);
+        */
+        sendData.pageNo = pageNo;
+        sendData.pageSize = pageSize;
 
         xhr.onload = ()=>{
             makeBoardList(xhr);
         }
 
         xhr.open('POST','/board/getBoardList');
-        xhr.send(formData);
+        xhr.setRequestHeader('Content-type', "application/json");
+        xhr.send(JSON.stringify(sendData));
     };
     
     function makeBoardList(xhr){        
@@ -50,7 +62,7 @@
 
                 if(i%3==2) html += '</div>';
             }
-
+            pageNo++;
             document.querySelector('.lastRow').insertAdjacentHTML('beforebegin', html);
 
         }else{
