@@ -1,0 +1,21 @@
+extends /layout/layout
+
+block content
+  #fh5co-tours.fh5co-section-gray
+    .container
+      form.contentForm(method="POST", action="/board/registBoard")
+        .row
+          .col-md-8.col-md-offset-2.text-center.heading-section.animate-box
+            h3 제목
+            #boardTitle         
+        .row
+          .col-md-8.col-md-offset-2.text-left.heading-section.animate-box(style="margin-bottom:15px;")
+            h3(style='text-align:center') 내용
+            #boardContents              
+      .row
+        .col-md-12.text-center.animate-box
+          p
+            a.btn.btn-primary.btn-outline.btn-lg(href='#')
+              | 돌아가기
+              i.icon-arrow-right22
+  script(src='/js/board/viewBoard.js')

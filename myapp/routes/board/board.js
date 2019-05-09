@@ -2,8 +2,10 @@ require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const debug = require('debug')('router');
+const url = require('url');
 const {isLoggedIn} = require('../middlewares');
 const {Board} = require('../../models');
+
 
 const path = require('path');
 
@@ -54,7 +56,7 @@ router.post('/getBoardList', async (req, res)=>{
         const pageSize = req.body.pageSize;
         
         const contents = await Board.findAll({
-            attributes:['name', 'title','contents'],
+            attributes:['listNo', 'name', 'title','contents'],
             offset:pageSize * (pageNo - 1),
             limit:pageSize
         });
@@ -64,6 +66,24 @@ router.post('/getBoardList', async (req, res)=>{
         console.error(error);
     }
         
+});
+
+router.get('/viewBoard', isLoggedIn, async(req, res)=>{
+    try{
+        const listNo = url.parse(req.url, true).query.listNo;
+        const content = await Board.findOne({
+            attributes:['listNo','id','name','title','contents'],
+            where:{listNo}
+        });
+        debug(content);
+        req.renderOption.title = 'VIEW BOARD';
+        res.render('board/viewBoard', req.renderOption);
+
+    }catch(error){
+        console.error(error);
+    }
+    
+    
 });
 
 module.exports = router;

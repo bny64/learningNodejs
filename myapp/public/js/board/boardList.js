@@ -63,7 +63,7 @@
                     html += '<span class="mb20">' + result[i].name + '</span>';
                     let splitCon = result[i].contents.length > 20 ? result[i].contents.substring(0, 20) + '...' : result[i].contents;
                     html += '<span class="price mb20">' + splitCon + '</span>';
-                    html += '<a class="btn btn-primary btn-outline" href="#">상세 보기<i class="icon-arrow-right22"></i></a>';
+                    html += '<a class="btn btn-primary btn-outline" href="/board/viewBoard?listNo='+result[i].listNo+'">상세 보기<i class="icon-arrow-right22"></i></a>';
                     html += '</div></div></div>';
     
                     if(i%3==2) html += '</div>';
