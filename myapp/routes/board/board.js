@@ -4,7 +4,7 @@ const router = express.Router();
 const debug = require('debug')('router');
 const url = require('url');
 const {isLoggedIn} = require('../middlewares');
-const {Board} = require('../../models');
+const {Board, Comment} = require('../../models');
 
 
 const path = require('path');
@@ -75,7 +75,14 @@ router.get('/viewBoard', isLoggedIn, async(req, res)=>{
             attributes:['listNo','id','name','title','contents'],
             where:{listNo}
         });
-        debug(content);
+
+        const comments = await Comment.findAll({
+            attributes:['id','name','contents'],
+            where : {
+                parListNo : content.listNo
+            }
+        })
+        debug(comments);
         req.renderOption.title = 'VIEW BOARD';
         res.render('board/viewBoard', req.renderOption);
 
