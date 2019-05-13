@@ -56,7 +56,8 @@ router.post('/getBoardList', async (req, res)=>{
         const contents = await Board.findAll({
             attributes:['listNo', 'name', 'title','contents'],
             offset:pageSize * (pageNo - 1),
-            limit:pageSize
+            limit:pageSize,
+            order : [['listNo','DESC']]
         });
         res.send({result:true, contents:contents});
 
@@ -66,13 +67,18 @@ router.post('/getBoardList', async (req, res)=>{
         
 });
 
-router.get('/viewBoard', isLoggedIn, async(req, res)=>{
+router.get('/viewBoard'/* , isLoggedIn */, async(req, res)=>{
+
+    req.renderOption = {
+        user : req.user,
+        basedir:path.join(process.env.ROOT, 'views')
+    };
+    
     try{
         const listNo = url.parse(req.url, true).query.listNo;
         const content = await Board.findOne({
             attributes:['listNo','id','name','title','contents'],
             where:{listNo},
-            order : 'listNo desc'
         });
 
         const comments = await Comment.findAll({
@@ -102,11 +108,12 @@ router.post('/getCommentList', async (req, res)=>{
         });
 
         const contents = await Comment.findAll({
-            attributes:['id', 'name', 'contents'],
+            attributes:['id', 'name', 'contents', 'listNo'],
             offset:pageSize * (pageNo - 1),
             limit:pageSize,
-            order : 'listNo desc'
+            order : [['listNo','DESC']]
         });
+
         //res.send에서 프로퍼티가 undefined이면 view단에서는 나오지 않음.
         res.send({
             result:true, 

@@ -34,8 +34,8 @@
                 let html = '';
                 html += '<div class="row txAnCtr commentRow">';
                 let i = 0;
-                for(i; i<result.count/3+1; i++){
-                    html += '<span class="pageBtn" style="margin-right:5px;>"' + i + '</span>';
+                for(i; i<result.count[0].count/3+1; i++){
+                    html += '<span class="pageBtn" style="margin-right:5px;">' + (i+1) + '</span>';
                 }
                 html += '</div>';
                 document.querySelector('.lastRow').insertAdjacentHTML('beforebegin', html);
