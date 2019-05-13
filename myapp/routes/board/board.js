@@ -81,16 +81,34 @@ router.get('/viewBoard', isLoggedIn, async(req, res)=>{
             where : {
                 parListNo : content.listNo
             }
-        })
-        debug(comments);
+        });
+        req.renderOption.content = content;
+        req.renderOption.comments = comments;
         req.renderOption.title = 'VIEW BOARD';
         res.render('board/viewBoard', req.renderOption);
 
     }catch(error){
         console.error(error);
     }
-    
-    
+});
+
+router.post('/getCommentList', async (req, res)=>{
+
+    try{
+        const pageNo = req.body.pageNo;        
+        const pageSize = req.body.pageSize;
+        
+        const contents = await Comment.findAll({
+            attributes:['id', 'name', 'contents'],
+            offset:pageSize * (pageNo - 1),
+            limit:pageSize
+        });
+        res.send({result:true, contents:contents});
+        
+    }catch(error){
+        console.error(error);
+    }
+        
 });
 
 module.exports = router;

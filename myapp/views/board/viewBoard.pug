@@ -7,11 +7,11 @@ block content
         .row
           .col-md-8.col-md-offset-2.text-center.heading-section.animate-box
             h3 제목
-            #boardTitle         
+            #boardTitle !{content.title}
         .row
           .col-md-8.col-md-offset-2.text-left.heading-section.animate-box(style="margin-bottom:15px;")
             h3(style='text-align:center') 내용
-            #boardContents              
+            #boardContents !{content.contents}   
       .row
         .col-md-12.text-center.animate-box
           p
