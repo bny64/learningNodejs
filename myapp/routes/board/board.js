@@ -4,9 +4,7 @@ const router = express.Router();
 const debug = require('debug')('router');
 const url = require('url');
 const {isLoggedIn} = require('../middlewares');
-const {Board, Comment} = require('../../models');
-
-
+const {Board, Comment, Sequelize} = require('../../models');
 const path = require('path');
 
 debug('#board# router is loaded');
@@ -73,7 +71,8 @@ router.get('/viewBoard', isLoggedIn, async(req, res)=>{
         const listNo = url.parse(req.url, true).query.listNo;
         const content = await Board.findOne({
             attributes:['listNo','id','name','title','contents'],
-            where:{listNo}
+            where:{listNo},
+            order : 'listNo desc'
         });
 
         const comments = await Comment.findAll({
@@ -98,17 +97,26 @@ router.post('/getCommentList', async (req, res)=>{
         const pageNo = req.body.pageNo;        
         const pageSize = req.body.pageSize;
         
+        const countResult = await Comment.findAll({
+            attributes : [[Sequelize.fn('COUNT', Sequelize.col('listNo')), 'count']]
+        });
+
         const contents = await Comment.findAll({
             attributes:['id', 'name', 'contents'],
             offset:pageSize * (pageNo - 1),
-            limit:pageSize
+            limit:pageSize,
+            order : 'listNo desc'
         });
-        res.send({result:true, contents:contents});
-        
+        //res.send에서 프로퍼티가 undefined이면 view단에서는 나오지 않음.
+        res.send({
+            result:true, 
+            contents,
+            count : countResult,
+        });
+
     }catch(error){
         console.error(error);
-    }
-        
+    }        
 });
 
 module.exports = router;

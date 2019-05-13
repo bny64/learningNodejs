@@ -2176,4 +2176,12 @@ input.wd100p{
   width:100%;
 }
 
+div.txAnCtr {
+  text-align: center;
+}
+
+span.fffty {
+  font-family: fantasy;
+}
+
 /*# sourceMappingURL=style.css.map */
