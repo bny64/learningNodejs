@@ -1,6 +1,7 @@
 extends /layout/layout
 
 block content
+  input#listNoVal(style="display:none;" value=content.listNo)
   #fh5co-tours.fh5co-section-gray
     .container
       form.contentForm(method="POST", action="/board/registBoard")
@@ -15,7 +16,12 @@ block content
       .row.lastRow
         .col-md-12.text-center.animate-box
           p
-            a.btn.btn-primary.btn-outline.btn-lg(href='#')
+            a.btn.btn-primary.btn-outline.btn-lg(href='javascript:void(0);')
+              | 댓글 달기
+              i.icon-arrow-right22
+          p
+            a.btn.btn-primary.btn-outline.btn-lg(href='/board/boardList')
               | 돌아가기
               i.icon-arrow-right22
+  #popup
   script(src='/js/board/viewBoard.js')

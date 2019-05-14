@@ -87,8 +87,9 @@ router.get('/viewBoard'/* , isLoggedIn */, async(req, res)=>{
                 parListNo : content.listNo
             }
         });
+        //페이지 개발 완료했으면 삭제
         req.renderOption.content = content;
-        req.renderOption.comments = comments;
+        req.renderOption.comments = comments;        
         req.renderOption.title = 'VIEW BOARD';
         res.render('board/viewBoard', req.renderOption);
 
@@ -98,20 +99,27 @@ router.get('/viewBoard'/* , isLoggedIn */, async(req, res)=>{
 });
 
 router.post('/getCommentList', async (req, res)=>{
-
+    
     try{
         const pageNo = req.body.pageNo;        
         const pageSize = req.body.pageSize;
-        
+        const boardNo = req.body.boardNo;
+
         const countResult = await Comment.findAll({
-            attributes : [[Sequelize.fn('COUNT', Sequelize.col('listNo')), 'count']]
+            attributes : [[Sequelize.fn('COUNT', Sequelize.col('listNo')), 'count']],
+            where : {
+                parListNo : boardNo
+            }
         });
 
         const contents = await Comment.findAll({
             attributes:['id', 'name', 'contents', 'listNo'],
             offset:pageSize * (pageNo - 1),
             limit:pageSize,
-            order : [['listNo','DESC']]
+            order : [['listNo','DESC']],
+            where : {
+                parListNo : boardNo
+            }
         });
 
         //res.send에서 프로퍼티가 undefined이면 view단에서는 나오지 않음.

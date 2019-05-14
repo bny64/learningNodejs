@@ -4,20 +4,21 @@
     const iconArr = [
         'icon-hotairballoon', 'icon-search','icon-wallet','icon-wine','icon-genius','icon-chat'
     ]
-
-    let pageNo = 1;
+    
     let pageSize = 3;
     let lastCheck = false;
     let firstCheck = false;
+    const boardNo = document.querySelector('#listNoVal').value;
 
-    getCommentList();
+    getCommentList(1);
 
-    function getCommentList(){
+    function getCommentList(pageNo){
         const sendData = {};
         const xhr = new XMLHttpRequest();
 
         sendData.pageNo = pageNo;
         sendData.pageSize = pageSize;
+        sendData.boardNo = boardNo;
 
         xhr.onload = () => {
             makeCommentList(xhr);
@@ -33,13 +34,15 @@
 
             const result = JSON.parse(xhr.responseText);
 
+            if(result.count[0].count==0) return;
+
             if(!firstCheck){
                 firstCheck = true;
                 let html = '';
                 html += '<div class="row txAnCtr commentRow mbt20">';
                 let i = 0;
-                for(i; i<result.count[0].count/3+1; i++){
-                    html += '<a href="#"><span class="pageBtn" style="margin-right:5px;">' + (i+1) + '</span></a>';
+                for(i; i<Math.floor(result.count[0].count/3)+1; i++){
+                    html += '<a href="javascript:void(0);"><span class="pageBtn" style="margin-right:5px;">' + (i+1) + '</span></a>';
                 }
                 html += '</div>';
                 document.querySelector('.lastRow').insertAdjacentHTML('beforebegin', html);
@@ -51,9 +54,37 @@
                     firstBtn.className = ' ' + 'fffty';
                 }
 
+                const pageBtnArr = document.querySelectorAll('.pageBtn');
+                pageBtnArr.forEach((element)=>{
+
+                    element.addEventListener('click', ()=>{
+
+                        pageBtnArr.forEach((tagEle)=>{
+                            if(tagEle.classList){
+                                tagEle.classList.remove('fffty');
+                            }else{
+                                tagEle.className = tagEle.className.replace(new RegExp('(^|\\b)' + 'fffty'.split(' ').join('|') + '(\\b|$)', 'gi'), ' ')
+                            }
+                        });
+
+                        if(element.classList){
+                            element.classList.add('fffty');
+                        }else{
+                            element.className += ' ' + 'fffty';
+                        }
+
+                        const commentDiv = document.querySelector('.commentList');
+                        //while(commentDiv.firstChild) commentDiv.removeChild(commentDiv.firstChild);
+                        commentDiv.parentNode.removeChild(commentDiv);
+
+                        getCommentList(element.textContent || element.innerText);
+
+                    });
+                });
+
             }
 
-            let html = '<div class="row">';
+            let html = '<div class="row commentList">';
             result.contents.map((cur)=>{                
                 html += '<div class="col-md-4 animate-box fadeInUp animated">';
                 html += '<div class="feature-left">';
