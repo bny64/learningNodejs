@@ -10,7 +10,36 @@
     let firstCheck = false;
     const boardNo = document.querySelector('#listNoVal').value;
 
+    document.querySelector('#showComment').addEventListener('click',()=>{
+        document.querySelector('#popup').style.display = '';
+    });
+
+    document.querySelector('#cancelComment').addEventListener('click',()=>{
+        document.querySelector('#popup').style.display = 'none';
+    });
+
+    document.querySelector('#addComment').addEventListener('click',()=>{
+        document.querySelector('#popup').style.display = 'none';
+        const contents = document.querySelector('#commentContents').value;        
+        addComment(contents);
+    });
+
     getCommentList(1);
+
+    function addComment(contents){
+        const sendData = {};
+        const xhr = new XMLHttpRequest();
+
+        sendData.boardNo = boardNo;
+        sendData.contents = contents;
+
+        xhr.onload = () => {
+            getCommentList(1);
+        }
+        xhr.open('POST', '/board/addComment');
+        xhr.setRequestHeader('Content-type', 'application/json');
+        xhr.send(JSON.stringify(sendData));
+    }
 
     function getCommentList(pageNo){
         const sendData = {};
@@ -21,6 +50,7 @@
         sendData.boardNo = boardNo;
 
         xhr.onload = () => {
+            firstCheck = false;
             makeCommentList(xhr);
         }
 

@@ -14,7 +14,11 @@ module.exports = (sequelize, DataTypes) => (
                 key : 'id',
                 onDelete:'cascade'
             }, */         
-        },        
+        },
+        name : {
+            type : DataTypes.STRING(30),
+            allowNull : false,
+        },
         contents : {
             type:DataTypes.TEXT,
             allowNull:false,

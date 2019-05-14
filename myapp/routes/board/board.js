@@ -50,8 +50,7 @@ router.post('/registBoard', isLoggedIn, (req, res)=>{
 router.post('/getBoardList', async (req, res)=>{
 
     try{
-        const pageNo = req.body.pageNo;        
-        const pageSize = req.body.pageSize;
+        const {pageNo, pageSize} = req.body;        
         
         const contents = await Board.findAll({
             attributes:['listNo', 'name', 'title','contents'],
@@ -67,7 +66,7 @@ router.post('/getBoardList', async (req, res)=>{
         
 });
 
-router.get('/viewBoard'/* , isLoggedIn */, async(req, res)=>{
+router.get('/viewBoard', isLoggedIn, async(req, res)=>{
 
     req.renderOption = {
         user : req.user,
@@ -101,9 +100,7 @@ router.get('/viewBoard'/* , isLoggedIn */, async(req, res)=>{
 router.post('/getCommentList', async (req, res)=>{
     
     try{
-        const pageNo = req.body.pageNo;        
-        const pageSize = req.body.pageSize;
-        const boardNo = req.body.boardNo;
+        const {pageNo, pageSize, boardNo} = req.body;
 
         const countResult = await Comment.findAll({
             attributes : [[Sequelize.fn('COUNT', Sequelize.col('listNo')), 'count']],
@@ -132,6 +129,27 @@ router.post('/getCommentList', async (req, res)=>{
     }catch(error){
         console.error(error);
     }        
+});
+
+router.post('/addComment', (req, res)=>{
+
+    const {boardNo, contents} = req.body;
+
+    try{
+        const commentObj = {
+            id:req.user.id,
+            name:req.user.name,
+            contents,
+            secretYn : 'N',
+            parListNo : boardNo      
+        }        
+        
+        Comment.create(commentObj);        
+        res.send({result:true});
+
+    }catch(error){
+        console.error(error);
+    }
 });
 
 module.exports = router;
