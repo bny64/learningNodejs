@@ -1,6 +1,10 @@
 (function(){
     'user strict';
 
+    const iconArr = [
+        'icon-hotairballoon', 'icon-search','icon-wallet','icon-wine','icon-genius','icon-chat'
+    ]
+
     let pageNo = 1;
     let pageSize = 3;
     let lastCheck = false;
@@ -32,10 +36,10 @@
             if(!firstCheck){
                 firstCheck = true;
                 let html = '';
-                html += '<div class="row txAnCtr commentRow">';
+                html += '<div class="row txAnCtr commentRow mbt20">';
                 let i = 0;
                 for(i; i<result.count[0].count/3+1; i++){
-                    html += '<span class="pageBtn" style="margin-right:5px;">' + (i+1) + '</span>';
+                    html += '<a href="#"><span class="pageBtn" style="margin-right:5px;">' + (i+1) + '</span></a>';
                 }
                 html += '</div>';
                 document.querySelector('.lastRow').insertAdjacentHTML('beforebegin', html);
@@ -50,16 +54,20 @@
             }
 
             let html = '<div class="row">';
-            result.contents.map((cur)=>{
-                let html = '';
-                html += '<div class="col-md-4 animate-box>"';
+            result.contents.map((cur)=>{                
+                html += '<div class="col-md-4 animate-box fadeInUp animated">';
                 html += '<div class="feature-left">';
+                html += '<span class="icon">';
+                const className = iconArr[Math.floor((Math.random() * (iconArr.length)))];
+                html += '<i class="'+className+'"></i></span>';
                 html += '<div class="feature-copy">';
                 html += '<h3>' + cur.name + '</h3>';
                 html += '<p>' + cur.contents + '</p>';
+                html += '<p><a href="javascript:void(0);"></a></p>';
                 html += '</div></div></div>';
             });
             html += '</div>';
+            
             document.querySelector('.commentRow').insertAdjacentHTML('beforebegin', html);
         }
     }

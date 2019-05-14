@@ -2184,4 +2184,18 @@ span.fffty {
   font-family: fantasy;
 }
 
+.mbt10 {
+  margin-bottom: 10px;
+}
+
+.mbt20{
+  margin-bottom: 20px;
+}
+
+.mbt75 {
+  margin-bottom: 75px;
+}
+.fsz25 {
+  font-size: 25px;
+}
 /*# sourceMappingURL=style.css.map */

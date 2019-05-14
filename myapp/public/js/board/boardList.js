@@ -55,7 +55,7 @@
                     result[i].contents = div.innerText;
     
                     html += '<div class="col-md-4 col-sm-6 fh5co-tours animate-box fadeInUp animated" data-animate-effect="fadeIn">';
-                    html += '<div href="#"><img class="img-responsive" src="/images/place-3.jpg" alt="Free HTML5 Website Template by FreeHTML5.co">';
+                    html += '<div href="javascript:void(0);"><img class="img-responsive" src="/images/place-3.jpg" alt="Free HTML5 Website Template by FreeHTML5.co">';
                     html += '<div class="desc" style="height:270px;">';
                     html += '<span></span>';
                     let splitTit = result[i].title.length > 8 ? result[i].title.substring(0, 10)+'...' : result[i].title;
