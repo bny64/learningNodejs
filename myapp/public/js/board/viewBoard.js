@@ -20,7 +20,7 @@
 
     document.querySelector('#addComment').addEventListener('click',()=>{
         document.querySelector('#popup').style.display = 'none';
-        const contents = document.querySelector('#commentContents').value;        
+        let contents = document.querySelector('#commentContents').value;        
         addComment(contents);
     });
 
@@ -34,6 +34,8 @@
         sendData.contents = contents;
 
         xhr.onload = () => {
+            firstCheck = false;
+            document.querySelector('#commentContents').value = '';            
             getCommentList(1);
         }
         xhr.open('POST', '/board/addComment');
@@ -49,8 +51,7 @@
         sendData.pageSize = pageSize;
         sendData.boardNo = boardNo;
 
-        xhr.onload = () => {
-            firstCheck = false;
+        xhr.onload = () => {            
             makeCommentList(xhr);
         }
 
@@ -61,17 +62,26 @@
 
     function makeCommentList(xhr){
         if(xhr.status === 200){
-
+            
             const result = JSON.parse(xhr.responseText);
+            const containerNode = document.querySelector('.lastRow').parentNode;
 
             if(result.count[0].count==0) return;
 
             if(!firstCheck){
                 firstCheck = true;
+
+                const commentRowDiv = document.querySelector('.commentRow');
+
+                if(commentRowDiv !== null && containerNode.hasChildNodes(commentRowDiv)){                    
+                    containerNode.removeChild(commentRowDiv);
+                }
+
                 let html = '';
                 html += '<div class="row txAnCtr commentRow mbt20">';
                 let i = 0;
-                for(i; i<Math.floor(result.count[0].count/3)+1; i++){
+                const length = result.count[0].count%3 == 0 ? result.count[0].count/3 : Math.floor(result.count[0].count/3) + 1;
+                for(i; i<length; i++){
                     html += '<a href="javascript:void(0);"><span class="pageBtn" style="margin-right:5px;">' + (i+1) + '</span></a>';
                 }
                 html += '</div>';
@@ -103,15 +113,17 @@
                             element.className += ' ' + 'fffty';
                         }
 
-                        const commentDiv = document.querySelector('.commentList');
-                        //while(commentDiv.firstChild) commentDiv.removeChild(commentDiv.firstChild);
-                        commentDiv.parentNode.removeChild(commentDiv);
-
                         getCommentList(element.textContent || element.innerText);
 
                     });
                 });
 
+            }
+
+            const commentListDiv = document.querySelector('.commentList');
+
+            if(commentListDiv !== null && containerNode.hasChildNodes(commentListDiv)){
+                containerNode.removeChild(commentListDiv);
             }
 
             let html = '<div class="row commentList">';

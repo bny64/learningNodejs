@@ -6,7 +6,11 @@ const middleware = {
     isLoggedIn(req, res, next){
         //req.isAuthenticated -> req.login() 자동호출.
         if(req.isAuthenticated()){
-            
+                        
+            //res.render('board/viewBoard', req.renderOption);            
+            //res.render 첫번 째 파라미터에서 view 안에 있는 pug파일을 찾기 위해서
+            // basedir 루트를 입력해 줘야함.
+
             req.renderOption = {
                 user : req.user,
                 basedir:path.join(process.env.ROOT, 'views')
