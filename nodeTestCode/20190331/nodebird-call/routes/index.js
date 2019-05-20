@@ -5,7 +5,7 @@ const debug = require('debug')('router');
 
 debug('index.js router.get /test is loaded'); 
 router.get('/test', async(req, res, next)=>{
-    try{
+    try{ 
         if(!req.session.jwt){
             /**
              * axios.get ({주소, {headers:{헤더}}})
