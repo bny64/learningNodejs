@@ -1,7 +1,7 @@
 (function(){
     'use strict';
 
-    $(document).ready(()=>{
+    //$(document).ready(()=>{
         $("#summernote").summernote({
             lang:'ko-KR',
             disableDragAndDrop:true,
@@ -19,7 +19,7 @@
                 ['misc', ['codeview']]
             ]
         });    
-    })
+    //})
     
     document.querySelector("#registBtn").addEventListener("click",()=>{
         document.getElementsByClassName("contentForm")[0].submit();
