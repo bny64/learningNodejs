@@ -112,7 +112,7 @@ router.post('/getCommentList', async (req, res)=>{
         const contents = await Comment.findAll({
             attributes:['id', 'name', 'contents', 'listNo'],
             offset:pageSize * (pageNo - 1),
-            limit:pageSize,
+            limit:pageSize, 
             order : [['listNo','DESC']],
             where : {
                 parListNo : boardNo
