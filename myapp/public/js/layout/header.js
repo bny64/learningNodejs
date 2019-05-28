@@ -8,7 +8,7 @@
             const xhr = new XMLHttpRequest();
             xhr.onload = () => {
                 if(xhr.status === 200){
-                    window.location.reload();                    
+                    //window.location.reload();                    
                 }
             };
             xhr.open('POST','/auth/logout');
