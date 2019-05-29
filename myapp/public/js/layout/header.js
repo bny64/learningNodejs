@@ -8,7 +8,7 @@
             const xhr = new XMLHttpRequest();
             xhr.onload = () => {
                 if(xhr.status === 200){
-                    //window.location.reload();                    
+                    window.location.href = "http://49.247.211.93:9001";
                 }
             };
             xhr.open('POST','/auth/logout');
