@@ -1,0 +1,19 @@
+doctype html
+html
+    head
+        include headerInclude
+    body
+        header#header
+            include header_top
+            include header_mid
+            include header_bot
+        include slider
+        section
+            .container
+                .row
+                    include left
+                    block content
+        footer#footer
+            include footer_top
+            include footer_wid
+            include footer_bot

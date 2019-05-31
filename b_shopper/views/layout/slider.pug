@@ -1,0 +1,52 @@
+section#slider
+    // slider
+    .container
+        .row
+            .col-sm-12
+                #slider-carousel.carousel.slide(data-ride='carousel')
+                    ol.carousel-indicators
+                        li.active(data-target='#slider-carousel', data-slide-to='0')
+                        li(data-target='#slider-carousel', data-slide-to='1')
+                        li(data-target='#slider-carousel', data-slide-to='2')
+                    .carousel-inner
+                        .item.active
+                            .col-sm-6
+                                h1
+                                    span E
+                                    | -SHOPPER
+                                h2 Free E-Commerce Template
+                                p
+                                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                button.btn.btn-default.get(type='button') Get it now
+                            .col-sm-6
+                                img.girl.img-responsive(src='/images/home/girl1.jpg', alt='')
+                                img.pricing(src='/images/home/pricing.png', alt='')
+                        .item
+                            .col-sm-6
+                                h1
+                                    span E
+                                    | -SHOPPER
+                                h2 100% Responsive Design
+                                p
+                                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                button.btn.btn-default.get(type='button') Get it now
+                            .col-sm-6
+                                img.girl.img-responsive(src='/images/home/girl2.jpg', alt='')
+                                img.pricing(src='/images/home/pricing.png', alt='')
+                        .item
+                            .col-sm-6
+                                h1
+                                    span E
+                                    | -SHOPPER
+                                h2 Free Ecommerce Template
+                                p
+                                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                button.btn.btn-default.get(type='button') Get it now
+                            .col-sm-6
+                                img.girl.img-responsive(src='/images/home/5878689_1.jpg', alt='')
+                                img.pricing(src='/images/home/pricing.png', alt='')
+                    a.left.control-carousel.hidden-xs(href='#slider-carousel', data-slide='prev')
+                        i.fa.fa-angle-left
+                    a.right.control-carousel.hidden-xs(href='#slider-carousel', data-slide='next')
+                        i.fa.fa-angle-right
+// /slider
