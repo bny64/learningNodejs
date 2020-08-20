@@ -7,7 +7,7 @@
     "project1D": "export DEBUG=router_index.js,router_auth.js,passport_index.js,passport_localStrategy.js,router_middleware.js; nodemon ./bin/www"
   },
   "dependencies": {
-    "bcrypt": "^3.0.4",
+    "bcrypt": "^5.0.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "dotenv": "^6.2.0",
