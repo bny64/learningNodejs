@@ -9,7 +9,7 @@
   "author": "namyul",
   "license": "MIT",
   "dependencies": {
-    "bcrypt": "^3.0.5",
+    "bcrypt": "^5.0.0",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.4",
     "dotenv": "^7.0.0",
@@ -21,8 +21,8 @@
     "passport": "^0.4.0",
     "passport-kakao": "0.0.5",
     "passport-local": "^1.0.0",
-    "pug": "^2.0.3",
-    "sequelize": "^5.2.7",
+    "pug": "^3.0.1",
+    "sequelize": "^5.15.1",
     "uuid": "^3.3.2"
   }
 }
