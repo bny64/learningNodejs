@@ -16,6 +16,6 @@
     "express": "^4.16.4",
     "node-persist": "^3.0.4",
     "prompt-sync": "^4.1.6",
-    "watson-developer-cloud": "^3.18.1"
+    "watson-developer-cloud": "^4.0.1"
   }
 }
